@@ -80,6 +80,14 @@
       margin-bottom: 15px;
     }
 
+    /* Botões */
+    .btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
     .btn {
       display: inline-block;
       padding: 10px 15px;
@@ -89,10 +97,23 @@
       border-radius: 8px;
       font-weight: bold;
       transition: 0.3s;
+      border: 1px solid transparent;
     }
 
     .btn:hover {
       background: #0ea5e9;
+    }
+
+   
+    .btn--soft {
+      background: transparent;
+      color: #e2e8f0;
+      border: 1px solid #1e293b;
+    }
+
+    .btn--soft:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: #38bdf8;
     }
 
     footer {
@@ -110,8 +131,8 @@
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <h1>Matheus</h1>
     <p>Desenvolvedor Web | HTML • CSS • JavaScript</p>
@@ -133,40 +154,70 @@
 
       <div class="projects">
 
+    
         <div class="card">
           <h3>Site de Restaurante</h3>
           <p>Site responsivo com cardápio digital por categorias, busca, carrinho e finalização do pedido via WhatsApp.</p>
-         <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">
-  Ver projeto
-</a>
-<a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">
-  Código
-</a>
+          <div class="btns">
+            <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">
+              Ver projeto
+            </a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">
+              Código
+            </a>
+          </div>
         </div>
 
+      
         <div class="card">
           <h3>Landing Page Comercial</h3>
           <p>Página criada para divulgação de serviços locais com foco em conversão.</p>
-          <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">
-  Ver projeto
-</a>
-
-<a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">
-  Código
-</a>
-
+          <div class="btns">
+            <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">
+              Ver projeto
+            </a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">
+              Código
+            </a>
+          </div>
         </div>
 
+   
         <div class="card">
           <h3>MovieRate — Avaliação de Filmes</h3>
           <p>Aplicação web interativa com busca, filtros, favoritos e avaliação por estrelas, com dados salvos no LocalStorage.</p>
-          <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">
-  Ver projeto
-</a>
+          <div class="btns">
+            <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">
+              Ver projeto
+            </a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">
+              Código
+            </a>
+          </div>
+        </div>
 
-<a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">
-  Código
-</a>
+       
+        <div class="card">
+          <h3>Detector de CPF/CNPJ</h3>
+          <p>Aplicação web que formata e valida CPF e CNPJ em tempo real, com feedback visual e cópia rápida.</p>
+          <div class="btns">
+            <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank" rel="noopener">
+              Ver projeto
+            </a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank" rel="noopener">
+              Código
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJETO 5 (TEMPLATE) -->
+        <div class="card">
+          <h3>Projeto 5 — Em breve</h3>
+          <p>Descrição do projeto 5 aqui. (Quando você publicar, eu coloco os links.)</p>
+          <div class="btns">
+            <a class="btn" href="#" target="_blank" rel="noopener">Ver projeto</a>
+            <a class="btn btn--soft" href="#" target="_blank" rel="noopener">Código</a>
+          </div>
         </div>
 
       </div>
@@ -175,8 +226,10 @@
     <section style="margin-top:50px" class="contact">
       <h2>Contato</h2>
       <a href="mailto:chamorromatheus5@gmail.com">chamorromatheus5@gmail.com</a>
-      <a href="https://github.com/Matheusmnttiii" target="_blank">GitHub</a>
-      <a href="#">WhatsApp</a>
+      <a href="https://github.com/Matheusmnttiii" target="_blank" rel="noopener">GitHub</a>
+
+    
+      <a href="https://wa.me/5567999999999" target="_blank" rel="noopener">WhatsApp</a>
     </section>
 
   </div>
@@ -184,11 +237,5 @@
   <footer>
     © 2026 Matheus — Desenvolvedor Web
   </footer>
-
 </body>
 </html>
-
-
-
-
-
