@@ -3,207 +3,498 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matheus Minanti | Desenvolvedor Web</title>
+  <title>Matheus | Desenvolvedor Web</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif}
+    html{scroll-behavior:smooth}
+
+    :root{
+      --bg:#0f172a;
+      --bg-soft:#020617;
+      --card:#020617;
+      --text:#e2e8f0;
+      --text-soft:#94a3b8;
+      --border:#1e293b;
+      --primary:#38bdf8;
+      --primary-hover:#0ea5e9;
+
+      --shadow: 0 14px 40px rgba(0,0,0,.25);
+      --radius: 14px;
+      --ring: 0 0 0 4px rgba(56,189,248,.12);
     }
 
-    :root {
-      --bg: #0f172a;
-      --bg-soft: #020617;
-      --text: #e2e8f0;
-      --text-soft: #94a3b8;
-      --border: #1e293b;
-      --primary: #38bdf8;
-      --primary-hover: #0ea5e9;
+    body.light{
+      --bg:#f8fafc;
+      --bg-soft:#ffffff;
+      --card:#ffffff;
+      --text:#0f172a;
+      --text-soft:#475569;
+      --border:#e2e8f0;
+      --primary:#0ea5e9;
+      --primary-hover:#0284c7;
+
+      --shadow: 0 14px 40px rgba(2,6,23,.10);
+      --ring: 0 0 0 4px rgba(14,165,233,.14);
     }
 
-
-    body.light {
-      --bg: #f8fafc;
-      --bg-soft: #ffffff;
-      --text: #0f172a;
-      --text-soft: #475569;
-      --border: #e2e8f0;
-      --primary: #0ea5e9;
-      --primary-hover: #0284c7;
-    }
-
-    body {
-      background: var(--bg);
+    body{
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(56,189,248,.12), transparent 55%),
+                  radial-gradient(1000px 520px at 90% 10%, rgba(59,130,246,.10), transparent 55%),
+                  var(--bg);
       color: var(--text);
       line-height: 1.6;
-      transition: 0.3s;
+      transition: background .35s ease, color .25s ease;
     }
 
-    header {
-      background: var(--bg-soft);
-      padding: 40px 20px;
-      text-align: center;
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg-soft) 82%, transparent);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      position: relative;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: var(--text-soft);
-      font-size: 1.1rem;
-    }
-
-   
-    .theme-toggle {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: 0.3s;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--primary);
-    }
-
-    .container {
-      max-width: 1000px;
+    .nav-inner{
+      max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
     }
 
-    h2 {
-      margin-bottom: 20px;
-      border-left: 4px solid var(--primary);
-      padding-left: 10px;
-    }
 
-    .about {
-      margin-bottom: 50px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:.2px;
+      white-space: nowrap;
+      line-height: 1;
     }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .brand .title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      line-height: 1;
     }
-
-    .card {
-      background: var(--bg-soft);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .card p {
+    .brand .subtitle{
+      display:inline-flex;
+      align-items:center;
+      line-height: 1;
+      font-weight:700;
       color: var(--text-soft);
-      margin-bottom: 15px;
+      font-size: .95rem;
+      padding-top: 1px;
     }
 
-    .btns {
-      display: flex;
+    .nav-links{
+      display:flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      align-items:center;
+      justify-content:flex-end;
     }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 15px;
-      background: var(--primary);
-      color: #020617;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
+    .nav-links a{
+      color: var(--text-soft);
+      text-decoration:none;
+      padding: 8px 10px;
+      border-radius: 10px;
       border: 1px solid transparent;
+      transition: .25s ease;
+      font-size: .95rem;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      border-color: var(--border);
+      background: rgba(255,255,255,.03);
     }
 
-    .btn:hover {
-      background: var(--primary-hover);
+    .theme-btn{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-radius: 999px;
+      cursor:pointer;
+      padding: 8px 10px;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      transition: transform .18s ease, border-color .25s ease, background .25s ease;
+      user-select:none;
+    }
+    .theme-btn:hover{ border-color: var(--primary); }
+    .theme-btn:active{ transform: scale(.98); }
+
+    .toggle{
+      width: 54px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .knob{
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      position:absolute;
+      top: 50%;
+      left: 3px;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, rgba(56,189,248,.9), rgba(59,130,246,.85));
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      transition: left .28s cubic-bezier(.2,.8,.2,1), filter .25s ease;
+    }
+    body.light .knob{ left: 27px; filter: saturate(1.05); }
+
+    .icon{
+      width: 18px;
+      height: 18px;
+      display:grid;
+      place-items:center;
+      opacity: .95;
+      transition: transform .25s ease;
+    }
+    body.light .icon{ transform: rotate(18deg); }
+
+    .container{max-width:1100px;margin:auto;padding: 34px 20px}
+    header.hero{ padding: 48px 0 26px; }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .nav-inner{ align-items:flex-start; }
     }
 
-    .btn--soft {
+    .panel{
+      background: color-mix(in srgb, var(--card) 85%, transparent);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1{
+      font-size: 2.4rem;
+      line-height: 1.12;
+      margin-bottom: 10px;
+      letter-spacing: .2px;
+    }
+    .hero p{
+      color: var(--text-soft);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+
+    .pill{
+      display:inline-flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 6px 0 18px;
+    }
+    .chip{
+      font-size: .85rem;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text-soft);
+    }
+    .chip strong{ color: var(--text); }
+
+    h2{
+      margin: 0 0 16px;
+      border-left: 4px solid var(--primary);
+      padding-left: 10px;
+      font-size: 1.25rem;
+    }
+
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top: 12px}
+
+    .btn{
+      display:inline-block;
+      padding:10px 15px;
+      background: var(--primary);
+      color:#020617;
+      text-decoration:none;
+      border-radius: 10px;
+      font-weight: 800;
+      transition:.25s ease;
+      border:1px solid transparent;
+    }
+    .btn:hover{ background: var(--primary-hover); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    .btn--soft{
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
+      font-weight: 700;
     }
-
-    .btn--soft:hover {
-      background: rgba(56, 189, 248, 0.12);
+    .btn--soft:hover{
+      background: rgba(56,189,248,.10);
       border-color: var(--primary);
     }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid var(--border);
-      color: var(--text-soft);
+    .hero-actions{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 420px;
+    }
+    .hero-actions .btn{ width:100%; text-align:center; }
+
+
+    .btn--whatsapp-hover{
+      background: var(--primary);
+      color: #020617;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      width: 56px;
+      padding: 10px;
+      overflow: hidden;
+      white-space: nowrap;
+
+      transition: width .25s ease, padding .25s ease, background .2s ease;
     }
 
-    .contact a {
+    .btn--whatsapp-hover:hover{
+      background: var(--primary-hover);
+      width: 210px;
+      padding: 10px 16px;
+    }
+
+    .wa-icon{
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .wa-label{
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity .2s ease, transform .25s ease;
+    }
+
+    .btn--whatsapp-hover:hover .wa-label{
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    section{ margin-top: 42px; }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px){ .grid-3{ grid-template-columns: 1fr; } }
+
+    .card{
+      background: color-mix(in srgb, var(--card) 86%, transparent);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      transition: transform .18s ease, border-color .25s ease;
+      box-shadow: var(--shadow);
+    }
+    .card:hover{ transform: translateY(-4px); border-color: var(--primary); }
+    .card h3{ margin-bottom: 8px; font-size: 1.05rem; }
+    .card p{ color: var(--text-soft); margin-bottom: 12px; font-size: .96rem; }
+
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .faq{ display:grid; gap: 10px; }
+
+    details{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--card) 86%, transparent);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    summary{
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-weight: 800;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .caret{ transition: transform .2s ease; color: var(--text-soft); }
+    details[open] .caret{ transform: rotate(180deg); }
+    .faq-body{ padding: 0 16px 14px; color: var(--text-soft); }
+
+    .contact a{
       color: var(--primary);
-      text-decoration: none;
-      display: block;
+      text-decoration:none;
+      display:block;
       margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .contact a:hover{ text-decoration: underline; }
+
+    .muted{ color: var(--text-soft); }
+
+    footer{
+      text-align:center;
+      padding: 28px 20px;
+      border-top: 1px solid var(--border);
+      color: var(--text-soft);
+      margin-top: 40px;
+    }
+
+    a:focus, button:focus{
+      outline: none;
+      box-shadow: var(--ring);
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <button class="theme-toggle" id="themeBtn">🌙 Modo escuro</button>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="title">🎬 Matheus</div>
+        <span class="subtitle">Desenvolvedor Web</span>
+      </div>
 
-    <h1>Matheus</h1>
-    <p>Desenvolvedor Web | HTML • CSS • JavaScript • Python • C++ </p>
-  </header>
+      <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Contato</a>
+
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema">
+          <div class="icon" id="themeIcon">🌙</div>
+          <div class="toggle" aria-hidden="true">
+            <div class="knob"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="panel">
+          <h1>Sites modernos, rápidos e responsivos.</h1>
+          <p>
+            Sou estudante de Engenharia de Software e técnico em Informática para Internet pelo IFMS.
+            Crio sites com visual profissional, foco em conversão e experiência do usuário.
+          </p>
 
-    <section class="about">
+          <div class="pill">
+            <span class="chip"><strong>HTML</strong></span>
+            <span class="chip"><strong>CSS</strong></span>
+            <span class="chip"><strong>JavaScript</strong></span>
+            <span class="chip">Responsivo</span>
+            <span class="chip">Performance</span>
+            <span class="chip">UI/UX</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn" href="#projetos">Ver projetos</a>
+            <a class="btn btn--soft" href="#contato">Falar comigo</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 style="margin-top:0">Disponível para</h2>
+          <p class="muted">
+            Landing pages, sites institucionais, cardápios digitais, portfólios e sistemas simples em JS.
+          </p>
+
+          <div class="grid-3" style="grid-template-columns:1fr;gap:10px;margin-top:12px;">
+            <div class="card" style="box-shadow:none">
+              <h3>Prazo rápido</h3>
+              <p>Entrega clara com etapas e alinhamento do que vai ser feito.</p>
+            </div>
+            <div class="card" style="box-shadow:none">
+              <h3>Design limpo</h3>
+              <p>Visual moderno e simples, com foco em leitura e conversão.</p>
+            </div>
+            <div class="card" style="box-shadow:none">
+              <h3>Responsivo</h3>
+              <p>Funciona bem no celular, tablet e desktop.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="sobre">
       <h2>Sobre mim</h2>
-      <p>
-        Sou estudante de Engenharia de Software e técnico em Informática para Internet pelo IFMS.
-        Desenvolvo sites modernos, rápidos e responsivos para empresas, comércios e projetos pessoais.
-        Busco sempre criar interfaces simples, bonitas e funcionais.
-      </p>
+      <div class="panel">
+        <p>
+          Sou o Matheus, estudante de Engenharia de Software e técnico em Informática para Internet pelo IFMS.
+          Desenvolvo sites modernos, rápidos e responsivos para empresas, comércios e projetos pessoais.
+          Busco sempre criar interfaces simples, bonitas e funcionais.
+        </p>
+      </div>
     </section>
 
-    <section>
+    <section id="servicos">
+      <h2>Serviços</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Landing Page</h3>
+          <p>Ideal para divulgar serviços e captar clientes (WhatsApp, formulário, CTA).</p>
+          <p class="muted">Inclui: layout responsivo, SEO básico e performance.</p>
+        </div>
+
+        <div class="card">
+          <h3>Site Institucional</h3>
+          <p>Apresente sua empresa com credibilidade: páginas, seções e contato.</p>
+          <p class="muted">Inclui: estrutura clara, visual moderno e responsividade.</p>
+        </div>
+
+        <div class="card">
+          <h3>Sistemas Simples</h3>
+          <p>Ferramentas web em JS: catálogos, listas, filtros, armazenamento local.</p>
+          <p class="muted">Inclui: UI interativa e organização do código.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:14px">
+        <p class="muted">
+          Quer orçamento? Me chame no WhatsApp com: <strong>tipo de site</strong>, <strong>prazo</strong> e <strong>referência</strong>.
+        </p>
+      </div>
+    </section>
+
+    <section id="projetos">
       <h2>Projetos</h2>
 
       <div class="projects">
-
-    
-
         <div class="card">
           <h3>Site de Restaurante</h3>
           <p>Site responsivo com cardápio digital por categorias, busca, carrinho e finalização do pedido via WhatsApp.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank">Ver projeto</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank">Código</a>
+            <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -211,8 +502,8 @@
           <h3>Landing Page Comercial</h3>
           <p>Página criada para divulgação de serviços locais com foco em conversão.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank">Ver projeto</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank">Código</a>
+            <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -220,8 +511,8 @@
           <h3>MovieRate — Avaliação de Filmes</h3>
           <p>Aplicação web interativa com busca, filtros, favoritos e avaliação por estrelas, com dados salvos no LocalStorage.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank">Ver projeto</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank">Código</a>
+            <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -229,8 +520,8 @@
           <h3>Detector de CPF/CNPJ</h3>
           <p>Aplicação web que formata e valida CPF e CNPJ em tempo real, com feedback visual e cópia rápida.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank">Ver projeto</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank">Código</a>
+            <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank" rel="noopener">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -238,21 +529,75 @@
           <h3>Roadmap Visual de Estudos</h3>
           <p>Você escolhe uma área e o app mostra a trilha com progresso, filtros e salvamento automático (LocalStorage).</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank">Ver projeto</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank">Código</a>
+            <a class="btn" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank" rel="noopener">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
-
       </div>
     </section>
 
-    <section style="margin-top:50px" class="contact">
-      <h2>Contato</h2>
-      <a href="mailto:chamorromatheus5@gmail.com">chamorromatheus5@gmail.com</a>
-      <a href="https://github.com/Matheusmnttiii" target="_blank">GitHub</a>
-      <a href="https://wa.me/5567999999999" target="_blank">WhatsApp</a>
+    <section id="faq">
+      <h2>FAQ</h2>
+
+      <div class="faq">
+        <details>
+          <summary>Quanto custa um site? <span class="caret">▾</span></summary>
+          <div class="faq-body">
+            Depende do tipo (landing, institucional, cardápio, etc.). Eu faço orçamento rápido após entender o que você precisa.
+          </div>
+        </details>
+
+        <details>
+          <summary>Em quanto tempo fica pronto? <span class="caret">▾</span></summary>
+          <div class="faq-body">
+            Landing pages são mais rápidas; sites maiores levam mais tempo. Eu alinho prazo e etapas antes de começar.
+          </div>
+        </details>
+
+        <details>
+          <summary>Preciso pagar domínio e hospedagem? <span class="caret">▾</span></summary>
+          <div class="faq-body">
+            Se quiser um domínio próprio (ex: seusite.com), sim. Posso te orientar com opções baratas e seguras.
+          </div>
+        </details>
+
+        <details>
+          <summary>Funciona bem no celular? <span class="caret">▾</span></summary>
+          <div class="faq-body">
+            Sim. Eu faço responsivo garantindo leitura, botões e performance em telas menores.
+          </div>
+        </details>
+
+        <details>
+          <summary>Você faz alterações depois? <span class="caret">▾</span></summary>
+          <div class="faq-body">
+            Sim. Posso fazer ajustes pontuais ou manutenção contínua.
+          </div>
+        </details>
+      </div>
     </section>
 
+    <section id="contato" class="contact">
+      <h2>Contato</h2>
+      <div class="panel">
+        <a href="mailto:chamorromatheus5@gmail.com">chamorromatheus5@gmail.com</a>
+        <a href="https://github.com/Matheusmnttiii" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://wa.me/5567998690241" target="_blank" rel="noopener">WhatsApp: (67) 99869-0241</a>
+
+        <p class="muted" style="margin-top:10px">
+          Me chama com: tipo de site + prazo + referência (se tiver).
+        </p>
+
+        <div class="btns" style="margin-top:14px">
+          <a class="btn btn--whatsapp-hover" href="https://wa.me/5567998690241" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+            <span class="wa-icon">💬</span>
+            <span class="wa-label">Chamar no WhatsApp</span>
+          </a>
+
+          <a class="btn btn--soft" href="#projetos">Ver projetos</a>
+        </div>
+      </div>
+    </section>
   </div>
 
   <footer>
@@ -260,25 +605,36 @@
   </footer>
 
   <script>
-    const btn = document.getElementById("themeBtn");
+    const themeBtn = document.getElementById("themeBtn");
+    const themeIcon = document.getElementById("themeIcon");
+    const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)");
 
-    function setTheme(mode) {
+    function applyTheme(mode, persist = true){
       document.body.classList.toggle("light", mode === "light");
-      localStorage.setItem("theme", mode);
-      btn.textContent = mode === "light" ? "🌙 Modo escuro" : "☀️ Modo claro";
+      themeIcon.textContent = mode === "light" ? "☀️" : "🌙";
+      if (persist) localStorage.setItem("theme", mode);
     }
 
-    const saved = localStorage.getItem("theme") || "dark";
-    setTheme(saved);
+    function getInitialTheme(){
+      const saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") return saved;
+      return mq && mq.matches ? "light" : "dark";
+    }
 
-    btn.onclick = () => {
-      const newMode = document.body.classList.contains("light") ? "dark" : "light";
-      setTheme(newMode);
-    };
+    applyTheme(getInitialTheme(), false);
+
+    if (mq) {
+      mq.addEventListener?.("change", (e) => {
+        const saved = localStorage.getItem("theme");
+        if (saved) return;
+        applyTheme(e.matches ? "light" : "dark", false);
+      });
+    }
+
+    themeBtn.addEventListener("click", () => {
+      const isLight = document.body.classList.contains("light");
+      applyTheme(isLight ? "dark" : "light", true);
+    });
   </script>
 </body>
 </html>
-
-
-
-
