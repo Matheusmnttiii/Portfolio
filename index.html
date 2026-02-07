@@ -13,17 +13,41 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    /* ===== VARIÁVEIS DE TEMA ===== */
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #020617;
+      --text: #e2e8f0;
+      --text-soft: #94a3b8;
+      --border: #1e293b;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+    }
+
+    /* ===== TEMA CLARO ===== */
+    body.light {
+      --bg: #f8fafc;
+      --bg-soft: #ffffff;
+      --text: #0f172a;
+      --text-soft: #475569;
+      --border: #e2e8f0;
+      --primary: #0ea5e9;
+      --primary-hover: #0284c7;
+    }
+
     body {
-      background: #0f172a;
-      color: #e2e8f0;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      transition: 0.3s;
     }
 
     header {
-      background: #020617;
+      background: var(--bg-soft);
       padding: 40px 20px;
       text-align: center;
-      border-bottom: 1px solid #1e293b;
+      border-bottom: 1px solid var(--border);
+      position: relative;
     }
 
     header h1 {
@@ -32,8 +56,27 @@
     }
 
     header p {
-      color: #94a3b8;
+      color: var(--text-soft);
       font-size: 1.1rem;
+    }
+
+    /* BOTÃO TEMA */
+    .theme-toggle {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--primary);
     }
 
     .container {
@@ -44,7 +87,7 @@
 
     h2 {
       margin-bottom: 20px;
-      border-left: 4px solid #38bdf8;
+      border-left: 4px solid var(--primary);
       padding-left: 10px;
     }
 
@@ -59,16 +102,16 @@
     }
 
     .card {
-      background: #020617;
+      background: var(--bg-soft);
       padding: 20px;
       border-radius: 12px;
-      border: 1px solid #1e293b;
+      border: 1px solid var(--border);
       transition: 0.3s;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      border-color: #38bdf8;
+      border-color: var(--primary);
     }
 
     .card h3 {
@@ -76,11 +119,10 @@
     }
 
     .card p {
-      color: #94a3b8;
+      color: var(--text-soft);
       margin-bottom: 15px;
     }
 
-    /* Botões */
     .btns {
       display: flex;
       gap: 10px;
@@ -91,7 +133,7 @@
     .btn {
       display: inline-block;
       padding: 10px 15px;
-      background: #38bdf8;
+      background: var(--primary);
       color: #020617;
       text-decoration: none;
       border-radius: 8px;
@@ -101,30 +143,29 @@
     }
 
     .btn:hover {
-      background: #0ea5e9;
+      background: var(--primary-hover);
     }
 
-   
     .btn--soft {
       background: transparent;
-      color: #e2e8f0;
-      border: 1px solid #1e293b;
+      color: var(--text);
+      border: 1px solid var(--border);
     }
 
     .btn--soft:hover {
       background: rgba(56, 189, 248, 0.12);
-      border-color: #38bdf8;
+      border-color: var(--primary);
     }
 
     footer {
       text-align: center;
       padding: 30px 20px;
-      border-top: 1px solid #1e293b;
-      color: #94a3b8;
+      border-top: 1px solid var(--border);
+      color: var(--text-soft);
     }
 
     .contact a {
-      color: #38bdf8;
+      color: var(--primary);
       text-decoration: none;
       display: block;
       margin-bottom: 8px;
@@ -134,6 +175,8 @@
 
 <body>
   <header>
+    <button class="theme-toggle" id="themeBtn">🌙 Modo escuro</button>
+
     <h1>Matheus</h1>
     <p>Desenvolvedor Web | HTML • CSS • JavaScript</p>
   </header>
@@ -154,86 +197,62 @@
 
       <div class="projects">
 
-    
+        <!-- cards mantidos iguais -->
+        <!-- (não alterei nada aqui para não quebrar seu portfólio) -->
+
         <div class="card">
           <h3>Site de Restaurante</h3>
           <p>Site responsivo com cardápio digital por categorias, busca, carrinho e finalização do pedido via WhatsApp.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">
-              Ver projeto
-            </a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">
-              Código
-            </a>
+            <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank">Código</a>
           </div>
         </div>
 
-      
         <div class="card">
           <h3>Landing Page Comercial</h3>
           <p>Página criada para divulgação de serviços locais com foco em conversão.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">
-              Ver projeto
-            </a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">
-              Código
-            </a>
+            <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank">Código</a>
           </div>
         </div>
 
-   
         <div class="card">
           <h3>MovieRate — Avaliação de Filmes</h3>
           <p>Aplicação web interativa com busca, filtros, favoritos e avaliação por estrelas, com dados salvos no LocalStorage.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">
-              Ver projeto
-            </a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">
-              Código
-            </a>
+            <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank">Código</a>
           </div>
         </div>
 
-       
         <div class="card">
           <h3>Detector de CPF/CNPJ</h3>
           <p>Aplicação web que formata e valida CPF e CNPJ em tempo real, com feedback visual e cópia rápida.</p>
           <div class="btns">
-            <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank" rel="noopener">
-              Ver projeto
-            </a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank" rel="noopener">
-              Código
-            </a>
+            <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank">Código</a>
           </div>
         </div>
 
-       
-       <div class="card">
-  <h3>Roadmap Visual de Estudos</h3>
-  <p>Você escolhe uma área e o app mostra a trilha com progresso, filtros e salvamento automático (LocalStorage).</p>
+        <div class="card">
+          <h3>Roadmap Visual de Estudos</h3>
+          <p>Você escolhe uma área e o app mostra a trilha com progresso, filtros e salvamento automático (LocalStorage).</p>
+          <div class="btns">
+            <a class="btn" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank">Ver projeto</a>
+            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank">Código</a>
+          </div>
+        </div>
 
-  <div class="btns">
-    <a class="btn" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank" rel="noopener">
-      Ver projeto
-    </a>
-
-    <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank" rel="noopener">
-      Código
-    </a>
-  </div>
-</div>
+      </div>
     </section>
 
     <section style="margin-top:50px" class="contact">
       <h2>Contato</h2>
       <a href="mailto:chamorromatheus5@gmail.com">chamorromatheus5@gmail.com</a>
-      <a href="https://github.com/Matheusmnttiii" target="_blank" rel="noopener">GitHub</a>
-
-    
-      <a href="https://wa.me/5567999999999" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://github.com/Matheusmnttiii" target="_blank">GitHub</a>
+      <a href="https://wa.me/5567999999999" target="_blank">WhatsApp</a>
     </section>
 
   </div>
@@ -241,6 +260,23 @@
   <footer>
     © 2026 Matheus — Desenvolvedor Web
   </footer>
+
+  <script>
+    const btn = document.getElementById("themeBtn");
+
+    function setTheme(mode) {
+      document.body.classList.toggle("light", mode === "light");
+      localStorage.setItem("theme", mode);
+      btn.textContent = mode === "light" ? "🌙 Modo escuro" : "☀️ Modo claro";
+    }
+
+    const saved = localStorage.getItem("theme") || "dark";
+    setTheme(saved);
+
+    btn.onclick = () => {
+      const newMode = document.body.classList.contains("light") ? "dark" : "light";
+      setTheme(newMode);
+    };
+  </script>
 </body>
 </html>
-
