@@ -18,10 +18,9 @@
       --border:#1e293b;
       --primary:#38bdf8;
       --primary-hover:#0ea5e9;
-
-      --shadow: 0 14px 40px rgba(0,0,0,.25);
-      --radius: 14px;
-      --ring: 0 0 0 4px rgba(56,189,248,.12);
+      --shadow: 0 16px 48px rgba(0,0,0,.28);
+      --radius: 16px;
+      --ring: 0 0 0 4px rgba(56,189,248,.16);
     }
     body.light{
       --bg:#f8fafc;
@@ -32,36 +31,36 @@
       --border:#e2e8f0;
       --primary:#0ea5e9;
       --primary-hover:#0284c7;
-
-      --shadow: 0 14px 40px rgba(2,6,23,.10);
-      --ring: 0 0 0 4px rgba(14,165,233,.14);
+      --shadow: 0 16px 48px rgba(2,6,23,.10);
+      --ring: 0 0 0 4px rgba(14,165,233,.16);
     }
 
     body{
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(56,189,248,.12), transparent 55%),
-                  radial-gradient(1000px 520px at 90% 10%, rgba(59,130,246,.10), transparent 55%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 640px at 20% 0%, rgba(56,189,248,.12), transparent 55%),
+        radial-gradient(1000px 560px at 90% 10%, rgba(59,130,246,.10), transparent 55%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
       transition: background .35s ease, color .25s ease;
     }
 
-    
+    /* ===== NAV ===== */
     .nav{
       position: sticky;
       top: 0;
-      z-index: 80;
+      z-index: 90;
       background: color-mix(in srgb, var(--bg-soft) 82%, transparent);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       transition: transform .22s ease;
     }
-    .nav--hidden{ transform: translateY(-110%); } 
+    .nav--hidden{ transform: translateY(-110%); }
 
     .nav-inner{
-      max-width: 1100px;
+      max-width: 1120px;
       margin: auto;
-      padding: 14px 20px;
+      padding: 12px 18px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -72,8 +71,6 @@
       display:flex;
       align-items:center;
       gap:12px;
-      font-weight:800;
-      letter-spacing:.2px;
       white-space: nowrap;
       line-height: 1;
     }
@@ -81,33 +78,35 @@
       display:flex;
       align-items:center;
       gap:10px;
+      font-weight: 900;
+      letter-spacing:.2px;
       line-height: 1;
     }
     .brand .subtitle{
       display:inline-flex;
       align-items:center;
-      line-height: 1;
       font-weight:700;
       color: var(--text-soft);
       font-size: .95rem;
+      line-height: 1;
       padding-top: 1px;
     }
 
     .nav-links{
       display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
       align-items:center;
-      justify-content:flex-end;
+      gap: 10px;
+      flex-wrap: nowrap;
     }
     .nav-links a{
       color: var(--text-soft);
       text-decoration:none;
       padding: 8px 10px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px solid transparent;
       transition: .25s ease;
       font-size: .95rem;
+      white-space: nowrap;
     }
     .nav-links a:hover{
       color: var(--text);
@@ -115,7 +114,7 @@
       background: rgba(255,255,255,.03);
     }
 
-   
+    /* ===== THEME BUTTON ===== */
     .theme-btn{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
@@ -131,7 +130,6 @@
     }
     .theme-btn:hover{ border-color: var(--primary); }
     .theme-btn:active{ transform: scale(.98); }
-
     .toggle{
       width: 54px;
       height: 30px;
@@ -164,7 +162,7 @@
     }
     body.light .icon{ transform: rotate(18deg); }
 
- 
+    /* ===== MOBILE MENU ===== */
     .menu-btn{
       display:none;
       border: 1px solid var(--border);
@@ -180,50 +178,82 @@
     .menu-btn:active{ transform: scale(.98); }
     .menu-btn span{ font-size: 18px; line-height: 1; }
 
-
     .mobile-drawer{
-      display:none;
       border-top: 1px solid var(--border);
       padding: 10px 14px 14px;
+      display:none;
     }
     .mobile-drawer a{
       display:block;
       padding: 12px 12px;
-      border-radius: 12px;
+      border-radius: 14px;
       text-decoration:none;
       color: var(--text);
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       margin-top: 10px;
-      font-weight: 800;
+      font-weight: 900;
     }
     .mobile-drawer a:hover{
       border-color: var(--primary);
       background: rgba(56,189,248,.10);
     }
+    .drawer-closed{ display:none; }
 
-
-    .container{max-width:1100px;margin:auto;padding: 34px 20px}
-    header.hero{ padding: 48px 0 26px; }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
+    /* ===== LAYOUT ===== */
+    .container{max-width:1120px;margin:auto;padding: 34px 18px}
     .panel{
-      background: color-mix(in srgb, var(--card) 85%, transparent);
+      background: color-mix(in srgb, var(--card) 88%, transparent);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 22px;
       box-shadow: var(--shadow);
     }
 
-    .hero h1{ font-size: 2.4rem; line-height: 1.12; margin-bottom: 10px; letter-spacing: .2px; }
-    .hero p{ color: var(--text-soft); font-size: 1.05rem; margin-bottom: 18px; }
-
-    .pill{ display:inline-flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 18px; }
+    /* ===== HERO ===== */
+    header.hero{ padding: 22px 0 6px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 900;
+      font-size: .92rem;
+      color: var(--text);
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .badge{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text-soft);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: .82rem;
+    }
+    .hero h1{
+      font-size: 2.2rem;
+      line-height: 1.12;
+      margin-bottom: 10px;
+      letter-spacing: .2px;
+    }
+    .hero p{
+      color: var(--text-soft);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+    .pill{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 8px 0 18px;
+    }
     .chip{
       font-size: .85rem;
       padding: 7px 10px;
@@ -231,87 +261,83 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       color: var(--text-soft);
-    }
-    .chip strong{ color: var(--text); }
-
-    h2{
-      margin: 0 0 16px;
-      border-left: 4px solid var(--primary);
-      padding-left: 10px;
-      font-size: 1.25rem;
+      font-weight: 800;
     }
 
-    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top: 12px}
+    /* ===== CTA BUTTONS ===== */
+    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top: 10px}
     .btn{
-      display:inline-block;
-      padding:10px 15px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 11px 16px;
       background: var(--primary);
       color:#020617;
       text-decoration:none;
-      border-radius: 10px;
-      font-weight: 800;
+      border-radius: 12px;
+      font-weight: 900;
       transition:.25s ease;
       border:1px solid transparent;
+      white-space: nowrap;
     }
     .btn:hover{ background: var(--primary-hover); transform: translateY(-1px); }
     .btn:active{ transform: translateY(0); }
-
     .btn--soft{
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
-      font-weight: 700;
+      font-weight: 900;
     }
     .btn--soft:hover{
+      background: rgba(56,189,248,.10);
+      border-color: var(--primary);
+    }
+    /* CTA zap no estilo "soft" (cor de fundo) */
+    .btn--soft.btn--zap:hover{
       background: rgba(56,189,248,.10);
       border-color: var(--primary);
     }
 
     .hero-actions{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.2fr .8fr;
       gap: 10px;
-      max-width: 420px;
+      max-width: 560px;
     }
-    .hero-actions .btn{ width:100%; text-align:center; }
-
-  
-    .btn--whatsapp-hover{
-      background: var(--primary);
-      color: #020617;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-
-      width: 56px;
-      padding: 10px;
-      overflow: hidden;
-      white-space: nowrap;
-
-      transition: width .25s ease, padding .25s ease, background .2s ease;
+    .hero-actions .btn{ width:100%; }
+    .btn--zap{ position: relative; overflow: hidden; }
+    .btn--zap small{
+      display:block;
+      font-weight: 800;
+      opacity:.85;
+      font-size: .78rem;
+      line-height: 1.1;
     }
-    .btn--whatsapp-hover:hover{
-      background: var(--primary-hover);
-      width: 210px;
-      padding: 10px 16px;
-    }
-    .wa-icon{ font-size: 18px; flex-shrink: 0; }
-    .wa-label{
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity .2s ease, transform .25s ease;
-    }
-    .btn--whatsapp-hover:hover .wa-label{ opacity: 1; transform: translateX(0); }
 
-    section{ margin-top: 42px; }
+    /* ===== SECTIONS ===== */
+    section{ margin-top: 44px; }
+    h2{
+      margin: 0 0 16px;
+      border-left: 4px solid var(--primary);
+      padding-left: 10px;
+      font-size: 1.25rem;
+      letter-spacing:.2px;
+    }
+    .muted{ color: var(--text-soft); }
+
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 14px;
     }
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+    }
     .card{
-      background: color-mix(in srgb, var(--card) 86%, transparent);
+      background: color-mix(in srgb, var(--card) 88%, transparent);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 18px;
@@ -319,20 +345,61 @@
       box-shadow: var(--shadow);
     }
     .card:hover{ transform: translateY(-4px); border-color: var(--primary); }
-    .card h3{ margin-bottom: 8px; font-size: 1.05rem; }
-    .card p{ color: var(--text-soft); margin-bottom: 12px; font-size: .96rem; }
+    .card h3{ margin-bottom: 8px; font-size: 1.05rem; letter-spacing:.15px; }
+    .card p{ color: var(--text-soft); margin-bottom: 10px; font-size: .96rem; }
+    .list{
+      margin-top: 10px;
+      display:grid;
+      gap: 8px;
+      color: var(--text-soft);
+      font-weight: 700;
+      font-size: .95rem;
+    }
+    .list div{ display:flex; gap:10px; align-items:flex-start; }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px; background: rgba(56,189,248,.35);
+      margin-top: 6px; flex: 0 0 auto;
+      border: 1px solid color-mix(in srgb, var(--primary) 50%, transparent);
+    }
 
+    /* ===== PRICING ===== */
+    .price{
+      display:flex; align-items:baseline; gap: 10px; margin: 6px 0 10px;
+      font-weight: 900;
+    }
+    .price strong{ font-size: 1.6rem; }
+    .price span{ color: var(--text-soft); font-weight: 800; font-size: .9rem; }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text-soft);
+      font-weight: 900;
+      font-size: .82rem;
+    }
+    .tag b{ color: var(--text); }
+    .card--highlight{
+      outline: 2px solid rgba(56,189,248,.28);
+      box-shadow: 0 22px 60px rgba(56,189,248,.10);
+    }
+
+    /* ===== PROJECTS ===== */
     .projects{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 14px;
     }
 
+    /* ===== FAQ ===== */
     .faq{ display:grid; gap: 10px; }
     details{
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: color-mix(in srgb, var(--card) 86%, transparent);
+      background: color-mix(in srgb, var(--card) 88%, transparent);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -340,209 +407,375 @@
       list-style: none;
       cursor: pointer;
       padding: 14px 16px;
-      font-weight: 800;
+      font-weight: 900;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
     }
     summary::-webkit-details-marker{ display:none; }
-    .caret{ transition: transform .2s ease; color: var(--text-soft); }
+    .caret{ transition: transform .2s ease; color: var(--text-soft); font-weight: 900; }
     details[open] .caret{ transform: rotate(180deg); }
-    .faq-body{ padding: 0 16px 14px; color: var(--text-soft); }
+    .faq-body{ padding: 0 16px 14px; color: var(--text-soft); font-weight: 700; }
 
+    /* ===== CONTACT ===== */
     .contact a{
       color: var(--primary);
       text-decoration:none;
       display:block;
-      margin-bottom: 8px;
-      font-weight: 700;
+      margin-bottom: 10px;
+      font-weight: 900;
     }
     .contact a:hover{ text-decoration: underline; }
-    .muted{ color: var(--text-soft); }
 
+    /* ===== FOOTER ===== */
     footer{
       text-align:center;
-      padding: 28px 20px;
+      padding: 28px 18px;
       border-top: 1px solid var(--border);
       color: var(--text-soft);
       margin-top: 40px;
     }
-    a:focus, button:focus{ outline: none; box-shadow: var(--ring); }
 
- 
-    @media (max-width: 768px){
-      .nav-inner{
-        padding: 10px 12px;
-        justify-content: center;    
-        gap: 10px;
-      }
-
-      .brand{
-        flex: 1;
-        justify-content: center;    
-      }
-
-     
-      .nav-links a{ display:none; }
-
-      .menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
-      .theme-btn{
-        padding: 8px 8px;
-        gap: 8px;
-      }
-      .toggle{ width: 46px; height: 28px; }
-      .knob{ width: 22px; height: 22px; }
-
-
-      .mobile-drawer{ display:block; }
-
-      .hero-grid{ grid-template-columns: 1fr; }
-      .hero-actions{ max-width: 100%; }
-
-      .grid-3{ grid-template-columns: 1fr; }
-      .container{ padding: 22px 14px; }
-      header.hero{ padding: 30px 0 10px; }
-
-      .hero h1{ font-size: 2.05rem; }
+    a:focus, button:focus{
+      outline: none;
+      box-shadow: var(--ring);
     }
 
-    .drawer-closed{ display:none; }
+    /* ===== FLOATING WHATSAPP ===== */
+    .zap-float{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 120;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: var(--primary);
+      color:#020617;
+      text-decoration:none;
+      font-weight: 950;
+      box-shadow: 0 16px 44px rgba(0,0,0,.32);
+      border: 1px solid rgba(255,255,255,.10);
+      transition: transform .2s ease, background .2s ease;
+    }
+    .zap-float:hover{ background: var(--primary-hover); transform: translateY(-2px); }
+    .zap-float .zap-text{ display:none; }
+    @media (min-width: 920px){
+      .zap-float .zap-text{ display:inline; }
+    }
+
+    /* ===== MOBILE IMPROVEMENTS ===== */
+    @media (max-width: 860px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .container{ padding: 22px 14px; }
+      header.hero{ padding: 16px 0 0; }
+      .hero h1{ font-size: 2.05rem; }
+      .hero-actions{
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+      .brand .subtitle{ display:none; }
+
+      .nav-links a{ display:none; }
+      .menu-btn{ display:inline-flex; }
+      .mobile-drawer{ display:block; }
+
+      .nav-inner{
+        padding: 10px 12px;
+        justify-content: space-between;
+      }
+
+      /* no mobile, ctas em full width e texto mais legível */
+      .btns .btn{ width: 100%; }
+      .zap-float{ right: 14px; bottom: 14px; }
+    }
   </style>
 </head>
 
 <body>
-
+  <!-- NAV -->
   <div class="nav" id="topNav">
     <div class="nav-inner">
       <div class="brand">
-        <div class="title">Matheus</div>
+        <div class="title">🎬 Matheus</div>
         <span class="subtitle">Desenvolvedor Web</span>
       </div>
 
-  
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false">
-        <span>☰</span>
-      </button>
+      <div class="nav-links">
+        <!-- Links desktop -->
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Como funciona</a>
+        <a href="#precos">Preços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contato">Contato</a>
 
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema">
-        <div class="icon" id="themeIcon">🌙</div>
-        <div class="toggle" aria-hidden="true">
-          <div class="knob"></div>
-        </div>
-      </button>
+        <!-- Hambúrguer (mobile) -->
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false">
+          <span>☰</span>
+        </button>
 
-      <div class="nav-links" aria-hidden="true" style="display:none"></div>
+        <!-- Tema -->
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema">
+          <div class="icon" id="themeIcon">🌙</div>
+          <div class="toggle" aria-hidden="true">
+            <div class="knob"></div>
+          </div>
+        </button>
+      </div>
     </div>
 
+    <!-- Drawer mobile -->
     <div class="mobile-drawer drawer-closed" id="mobileDrawer">
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#precos">Preços</a>
       <a href="#projetos">Projetos</a>
       <a href="#faq">FAQ</a>
       <a href="#contato">Contato</a>
     </div>
   </div>
 
+  <!-- FLOATING WHATSAPP -->
+  <a class="zap-float" id="zapFloat" href="#" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+    <span aria-hidden="true">💬</span>
+    <span class="zap-text">Pedir orçamento</span>
+  </a>
+
+  <!-- CONTENT -->
   <div class="container">
     <header class="hero">
       <div class="hero-grid">
+        <!-- HERO MAIN -->
         <div class="panel">
-          <h1>Sites modernos, rápidos e responsivos.</h1>
+          <div class="eyebrow">
+            <span class="badge">Sites que geram clientes</span>
+            <span class="badge">Rápido • Responsivo • Profissional</span>
+          </div>
+
+          <h1>Eu crio sites profissionais para negócios e projetos — com foco em conversão e WhatsApp.</h1>
           <p>
-            Sou estudante de Engenharia de Software e técnico em Informática para Internet pelo IFMS.
-            Crio sites com visual profissional, foco em conversão e experiência do usuário.
+            Landing pages, sites institucionais e cardápios digitais. Você mostra seu serviço com credibilidade e recebe mensagens
+            de clientes com mais facilidade.
           </p>
 
           <div class="pill">
-            <span class="chip"><strong>HTML</strong></span>
-            <span class="chip"><strong>CSS</strong></span>
-            <span class="chip"><strong>JavaScript</strong></span>
-            <span class="chip">Responsivo</span>
-            <span class="chip">Performance</span>
-            <span class="chip">UI/UX</span>
+            <span class="chip">✅ Mobile-first</span>
+            <span class="chip">⚡ Performance</span>
+            <span class="chip">🔎 SEO básico</span>
+            <span class="chip">🧩 Interface moderna</span>
+            <span class="chip">📲 CTA no WhatsApp</span>
           </div>
 
           <div class="hero-actions">
-            <a class="btn" href="#projetos">Ver projetos</a>
-            <a class="btn btn--soft" href="#contato">Falar comigo</a>
+            <!-- AGORA: botão do zap no estilo "soft" (cor de fundo) -->
+            <a class="btn btn--soft btn--zap" id="ctaZapTop" href="#" target="_blank" rel="noopener">
+              <span aria-hidden="true">💬</span>
+              <span>
+                Pedir orçamento no WhatsApp
+                <small>Resposta rápida • Sem enrolação</small>
+              </span>
+            </a>
+
+            <a class="btn btn--soft" href="#projetos">Ver projetos</a>
+          </div>
+
+          <div style="margin-top:14px" class="muted">
+            <b style="color:var(--text)">Entrega organizada:</b> alinhamento → layout → ajustes → publicação.
           </div>
         </div>
 
+        <!-- HERO SIDE -->
         <div class="panel">
-          <h2 style="margin-top:0">Disponível para</h2>
-          <p class="muted">
-            Landing pages, sites institucionais, cardápios digitais, portfólios e sistemas simples em JS.
-          </p>
+          <h2 style="margin-top:0">Para quem eu faço</h2>
+          <p class="muted">Funciona para praticamente qualquer público que precisa aparecer e vender.</p>
 
-          <div class="grid-3" style="grid-template-columns:1fr;gap:10px;margin-top:12px;">
-            <div class="card" style="box-shadow:none">
-              <h3>Prazo rápido</h3>
-              <p>Entrega clara com etapas e alinhamento do que vai ser feito.</p>
-            </div>
-            <div class="card" style="box-shadow:none">
-              <h3>Design limpo</h3>
-              <p>Visual moderno e simples, com foco em leitura e conversão.</p>
-            </div>
-            <div class="card" style="box-shadow:none">
-              <h3>Responsivo</h3>
-              <p>Funciona bem no celular, tablet e desktop.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Restaurantes, lanchonetes e delivery</span></div>
+            <div><span class="dot"></span><span>Serviços locais: barbearia, estética, mecânica, etc.</span></div>
+            <div><span class="dot"></span><span>Lojas e profissionais: catálogo + contato</span></div>
+            <div><span class="dot"></span><span>Portfólios e projetos pessoais</span></div>
+          </div>
+
+          <div style="margin-top:16px" class="card">
+            <h3>O que você ganha</h3>
+            <p>Mais confiança e mais mensagens de clientes.</p>
+            <div class="list">
+              <div><span class="dot"></span><span>Site rápido no celular</span></div>
+              <div><span class="dot"></span><span>Chamada pra ação (CTA) forte</span></div>
+              <div><span class="dot"></span><span>Estrutura feita pra converter</span></div>
             </div>
           </div>
         </div>
       </div>
     </header>
 
-
+    <!-- SOBRE -->
     <section id="sobre">
-      <h2>Sobre mim</h2>
+      <h2>Sobre</h2>
       <div class="panel">
         <p>
           Sou o Matheus, estudante de Engenharia de Software e técnico em Informática para Internet pelo IFMS.
-          Desenvolvo sites modernos, rápidos e responsivos para empresas, comércios e projetos pessoais.
-          Busco sempre criar interfaces simples, bonitas e funcionais.
+          Eu construo sites modernos, rápidos e responsivos, com estrutura pensada para conversão (principalmente via WhatsApp).
         </p>
       </div>
     </section>
 
-
+    <!-- SERVIÇOS -->
     <section id="servicos">
       <h2>Serviços</h2>
       <div class="grid-3">
         <div class="card">
+          <span class="tag"><b>Mais pedido</b> • Conversão</span>
           <h3>Landing Page</h3>
-          <p>Ideal para divulgar serviços e captar clientes (WhatsApp, formulário, CTA).</p>
-          <p class="muted">Inclui: layout responsivo, SEO básico e performance.</p>
+          <p>Uma página direta para vender seu serviço/produto, com CTA forte e foco em WhatsApp.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Seções persuasivas (benefícios, prova, CTA)</span></div>
+            <div><span class="dot"></span><span>Responsivo e rápido</span></div>
+            <div><span class="dot"></span><span>SEO básico</span></div>
+          </div>
         </div>
 
         <div class="card">
+          <span class="tag"><b>Mais completo</b> • Credibilidade</span>
           <h3>Site Institucional</h3>
-          <p>Apresente sua empresa com credibilidade: páginas, seções e contato.</p>
-          <p class="muted">Inclui: estrutura clara, visual moderno e responsividade.</p>
+          <p>Para empresas: páginas, serviços, sobre, contato, e organização profissional.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Estrutura em seções/páginas</span></div>
+            <div><span class="dot"></span><span>Visual profissional</span></div>
+            <div><span class="dot"></span><span>CTA + formulário/WhatsApp</span></div>
+          </div>
         </div>
 
         <div class="card">
-          <h3>Sistemas Simples</h3>
-          <p>Ferramentas web em JS: catálogos, listas, filtros, armazenamento local.</p>
-          <p class="muted">Inclui: UI interativa e organização do código.</p>
+          <span class="tag"><b>Interativo</b> • Catálogo</span>
+          <h3>Catálogo / Cardápio Digital</h3>
+          <p>Listas, categorias, filtro/busca e botão “pedir” via WhatsApp.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Categorias + busca</span></div>
+            <div><span class="dot"></span><span>Pedido via WhatsApp</span></div>
+            <div><span class="dot"></span><span>Experiência mobile</span></div>
+          </div>
         </div>
       </div>
 
       <div class="panel" style="margin-top:14px">
-        <p class="muted">
-          Quer orçamento? Me chame no WhatsApp com: <strong>tipo de site</strong>, <strong>prazo</strong> e <strong>referência</strong>.
-        </p>
+        <div class="muted">
+          Quer orçamento mais rápido? Envie no WhatsApp: <b style="color:var(--text)">tipo de site</b>, <b style="color:var(--text)">prazo</b> e <b style="color:var(--text)">referência</b> (se tiver).
+        </div>
       </div>
     </section>
 
-  
+    <!-- PROCESSO -->
+    <section id="processo">
+      <h2>Como funciona</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1) Alinhamento</h3>
+          <p>Você me fala o que precisa + referência. Eu confirmo escopo, prazo e valor.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Objetivo do site (vender / apresentar / catálogo)</span></div>
+            <div><span class="dot"></span><span>Conteúdo: textos, fotos, logo</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>2) Layout + Ajustes</h3>
+          <p>Eu monto o visual, você revisa, e eu faço os ajustes finais sem bagunça.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Layout moderno e responsivo</span></div>
+            <div><span class="dot"></span><span>Correções rápidas</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>3) Publicação</h3>
+          <p>Coloco no ar (GitHub Pages ou hospedagem) e te entrego o link.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Orientação sobre domínio/hospedagem</span></div>
+            <div><span class="dot"></span><span>Site pronto pra compartilhar</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>4) Suporte</h3>
+          <p>Se precisar, faço manutenção e melhorias depois.</p>
+          <div class="list">
+            <div><span class="dot"></span><span>Alterações pontuais</span></div>
+            <div><span class="dot"></span><span>Melhorias de conversão</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREÇOS -->
+    <section id="precos">
+      <h2>Preços iniciais</h2>
+      <div class="muted" style="margin-bottom:12px">
+        Valores iniciais para dar referência. O preço final depende de páginas, seções e funcionalidades.
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <span class="tag">Ideal para <b>serviços</b></span>
+          <h3>Landing Page</h3>
+          <div class="price"><strong>R$ 150+</strong> <span>valor inicial</span></div>
+          <div class="list">
+            <div><span class="dot"></span><span>Seções (benefícios, CTA, contato)</span></div>
+            <div><span class="dot"></span><span>Responsivo + performance</span></div>
+            <div><span class="dot"></span><span>Botão WhatsApp + mensagem</span></div>
+          </div>
+        </div>
+
+        <div class="card card--highlight">
+          <span class="tag"><b>Mais vendido</b> • Profissional</span>
+          <h3>Institucional</h3>
+          <div class="price"><strong>R$ 250+</strong> <span>valor inicial</span></div>
+          <div class="list">
+            <div><span class="dot"></span><span>Estrutura completa do negócio</span></div>
+            <div><span class="dot"></span><span>Seções extras (FAQ, serviços)</span></div>
+            <div><span class="dot"></span><span>Layout moderno e organizado</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="tag">Ideal para <b>restaurantes</b></span>
+          <h3>Catálogo / Cardápio</h3>
+          <div class="price"><strong>R$ 300+</strong> <span>valor inicial</span></div>
+          <div class="list">
+            <div><span class="dot"></span><span>Categorias + busca</span></div>
+            <div><span class="dot"></span><span>Pedido via WhatsApp</span></div>
+            <div><span class="dot"></span><span>Feito pra celular</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:14px">
+        <div class="muted">
+          Quer fechar rápido? Clique em “Pedir orçamento” e já vai uma mensagem pronta.
+        </div>
+        <div class="btns" style="margin-top:12px">
+          <!-- AGORA: botão do zap no estilo "soft" (cor de fundo) -->
+          <a class="btn btn--soft btn--zap" id="ctaZapPrices" href="#" target="_blank" rel="noopener">
+            💬 Pedir orçamento no WhatsApp
+          </a>
+          <a class="btn btn--soft" href="#projetos">Ver exemplos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
     <section id="projetos">
       <h2>Projetos</h2>
 
       <div class="projects">
         <div class="card">
           <h3>Site de Restaurante</h3>
-          <p>Site responsivo com cardápio digital por categorias, busca, carrinho e finalização do pedido via WhatsApp.</p>
+          <p>Cardápio por categorias, busca, carrinho e finalização via WhatsApp.</p>
           <div class="btns">
             <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">Código</a>
@@ -551,7 +784,7 @@
 
         <div class="card">
           <h3>Landing Page Comercial</h3>
-          <p>Página criada para divulgação de serviços locais com foco em conversão.</p>
+          <p>Página para divulgação de serviços locais com foco em conversão.</p>
           <div class="btns">
             <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">Código</a>
@@ -560,7 +793,7 @@
 
         <div class="card">
           <h3>MovieRate — Avaliação de Filmes</h3>
-          <p>Aplicação web interativa com busca, filtros, favoritos e avaliação por estrelas, com dados salvos no LocalStorage.</p>
+          <p>Busca, filtros, favoritos e avaliação por estrelas (LocalStorage).</p>
           <div class="btns">
             <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">Código</a>
@@ -569,7 +802,7 @@
 
         <div class="card">
           <h3>Detector de CPF/CNPJ</h3>
-          <p>Aplicação web que formata e valida CPF e CNPJ em tempo real, com feedback visual e cópia rápida.</p>
+          <p>Formata e valida CPF/CNPJ em tempo real, com feedback visual.</p>
           <div class="btns">
             <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank" rel="noopener">Código</a>
@@ -578,7 +811,7 @@
 
         <div class="card">
           <h3>Roadmap Visual de Estudos</h3>
-          <p>Você escolhe uma área e o app mostra a trilha com progresso, filtros e salvamento automático (LocalStorage).</p>
+          <p>Trilhas com progresso, filtros e salvamento automático.</p>
           <div class="btns">
             <a class="btn" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank" rel="noopener">Código</a>
@@ -587,48 +820,50 @@
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
       <h2>FAQ</h2>
-
       <div class="faq">
         <details>
           <summary>Quanto custa um site? <span class="caret">▾</span></summary>
           <div class="faq-body">
-            Depende do tipo (landing, institucional, cardápio, etc.). Eu faço orçamento rápido após entender o que você precisa.
+            Depende do tipo (landing, institucional, catálogo) e do que precisa (seções, páginas, funcionalidades).
+            Eu te passo um orçamento rápido após entender objetivo + prazo + referência.
           </div>
         </details>
 
         <details>
           <summary>Em quanto tempo fica pronto? <span class="caret">▾</span></summary>
           <div class="faq-body">
-            Landing pages são mais rápidas; sites maiores levam mais tempo. Eu alinho prazo e etapas antes de começar.
+            Varia pelo tamanho. Landing pages costumam ser mais rápidas. Sites maiores levam mais tempo.
+            Eu sempre alinho etapas antes de começar.
           </div>
         </details>
 
         <details>
           <summary>Preciso pagar domínio e hospedagem? <span class="caret">▾</span></summary>
           <div class="faq-body">
-            Se quiser um domínio próprio (ex: seusite.com), sim. Posso te orientar com opções baratas e seguras.
+            Se quiser um domínio próprio (ex: seusite.com), sim. Posso te orientar com opções simples e baratas.
           </div>
         </details>
 
         <details>
-          <summary>Funciona bem no celular? <span class="caret">▾</span></summary>
+          <summary>O site funciona bem no celular? <span class="caret">▾</span></summary>
           <div class="faq-body">
-            Sim. Eu faço responsivo garantindo leitura, botões e performance em telas menores.
+            Sim. Eu faço mobile-first: botões grandes, leitura boa e carregamento rápido.
           </div>
         </details>
 
         <details>
-          <summary>Você faz alterações depois? <span class="caret">▾</span></summary>
+          <summary>Você faz ajustes depois? <span class="caret">▾</span></summary>
           <div class="faq-body">
-            Sim. Posso fazer ajustes pontuais ou manutenção contínua.
+            Sim. Posso fazer alterações pontuais ou manutenção contínua.
           </div>
         </details>
       </div>
     </section>
 
- 
+    <!-- CONTATO -->
     <section id="contato" class="contact">
       <h2>Contato</h2>
       <div class="panel">
@@ -637,16 +872,15 @@
         <a href="https://wa.me/5567998690241" target="_blank" rel="noopener">WhatsApp: (67) 99869-0241</a>
 
         <p class="muted" style="margin-top:10px">
-          Me chama com: tipo de site + prazo + referência (se tiver).
+          Me chama com: <b style="color:var(--text)">tipo de site</b> + <b style="color:var(--text)">prazo</b> + <b style="color:var(--text)">referência</b> (se tiver).
         </p>
 
         <div class="btns" style="margin-top:14px">
-          <a class="btn btn--whatsapp-hover" href="https://wa.me/5567998690241" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
-            <span class="wa-icon">💬</span>
-            <span class="wa-label">Chamar no WhatsApp</span>
+          <!-- AGORA: botão do zap no estilo "soft" (cor de fundo) -->
+          <a class="btn btn--soft btn--zap" id="ctaZapBottom" href="#" target="_blank" rel="noopener">
+            💬 Pedir orçamento no WhatsApp
           </a>
-
-          <a class="btn btn--soft" href="#projetos">Ver projetos</a>
+          <a class="btn btn--soft" href="#precos">Ver preços</a>
         </div>
       </div>
     </section>
@@ -657,7 +891,22 @@
   </footer>
 
   <script>
- 
+    // ===== WhatsApp com mensagem pronta =====
+    const phone = "5567998690241";
+    const msg = encodeURIComponent(
+      "Olá Matheus! Quero um site.\n\n" +
+      "Tipo de site: (Landing / Institucional / Catálogo)\n" +
+      "Área/negócio: \n" +
+      "Prazo: \n" +
+      "Referência (link ou exemplo): \n"
+    );
+    const waLink = `https://wa.me/${phone}?text=${msg}`;
+    document.getElementById("ctaZapTop").href = waLink;
+    document.getElementById("ctaZapPrices").href = waLink;
+    document.getElementById("ctaZapBottom").href = waLink;
+    document.getElementById("zapFloat").href = waLink;
+
+    // ===== Tema (auto + toggle) =====
     const themeBtn = document.getElementById("themeBtn");
     const themeIcon = document.getElementById("themeIcon");
     const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)");
@@ -681,12 +930,12 @@
         applyTheme(e.matches ? "light" : "dark", false);
       });
     }
-
     themeBtn.addEventListener("click", () => {
       const isLight = document.body.classList.contains("light");
       applyTheme(isLight ? "dark" : "light", true);
     });
 
+    // ===== Menu mobile =====
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("mobileDrawer");
 
@@ -695,7 +944,6 @@
       menuBtn.setAttribute("aria-expanded", "false");
       menuBtn.querySelector("span").textContent = "☰";
     }
-
     menuBtn.addEventListener("click", () => {
       const isClosed = drawer.classList.contains("drawer-closed");
       if (isClosed) {
@@ -706,20 +954,15 @@
         closeDrawer();
       }
     });
+    drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", closeDrawer));
 
-
-    drawer.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => closeDrawer());
-    });
-
-    
+    // ===== Nav some ao rolar pra baixo e volta ao rolar pra cima (mobile) =====
     const nav = document.getElementById("topNav");
     let lastY = window.scrollY;
     let lockUntil = 0;
 
     window.addEventListener("scroll", () => {
-
-      if (window.innerWidth > 768) return;
+      if (window.innerWidth > 860) return;
 
       const now = Date.now();
       if (now < lockUntil) return;
@@ -732,8 +975,7 @@
         lastY = y;
         return;
       }
-
-      if (Math.abs(delta) < 8) return;
+      if (Math.abs(delta) < 10) return;
 
       if (delta > 0){
         nav.classList.add("nav--hidden");
@@ -743,7 +985,7 @@
       }
 
       lastY = y;
-      lockUntil = now + 80; 
+      lockUntil = now + 90;
     }, { passive: true });
 
     window.addEventListener("resize", () => {
@@ -753,4 +995,3 @@
   </script>
 </body>
 </html>
-
