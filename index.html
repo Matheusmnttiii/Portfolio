@@ -23,7 +23,6 @@
       --radius: 14px;
       --ring: 0 0 0 4px rgba(56,189,248,.12);
     }
-
     body.light{
       --bg:#f8fafc;
       --bg-soft:#ffffff;
@@ -47,14 +46,17 @@
       transition: background .35s ease, color .25s ease;
     }
 
+    /* ===== NAV (desktop) ===== */
     .nav{
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 80;
       background: color-mix(in srgb, var(--bg-soft) 82%, transparent);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      transition: transform .22s ease;
     }
+    .nav--hidden{ transform: translateY(-110%); } /* some ao rolar pra baixo */
 
     .nav-inner{
       max-width: 1100px;
@@ -65,7 +67,6 @@
       justify-content:space-between;
       gap: 12px;
     }
-
 
     .brand{
       display:flex;
@@ -114,6 +115,7 @@
       background: rgba(255,255,255,.03);
     }
 
+    /* ===== THEME BUTTON ===== */
     .theme-btn{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
@@ -152,7 +154,6 @@
       transition: left .28s cubic-bezier(.2,.8,.2,1), filter .25s ease;
     }
     body.light .knob{ left: 27px; filter: saturate(1.05); }
-
     .icon{
       width: 18px;
       height: 18px;
@@ -163,18 +164,52 @@
     }
     body.light .icon{ transform: rotate(18deg); }
 
+    /* ===== MOBILE MENU BUTTON ===== */
+    .menu-btn{
+      display:none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-radius: 12px;
+      cursor:pointer;
+      padding: 10px 12px;
+      transition: .2s ease;
+      user-select:none;
+    }
+    .menu-btn:hover{ border-color: var(--primary); }
+    .menu-btn:active{ transform: scale(.98); }
+    .menu-btn span{ font-size: 18px; line-height: 1; }
+
+    /* ===== MOBILE DROPDOWN ===== */
+    .mobile-drawer{
+      display:none;
+      border-top: 1px solid var(--border);
+      padding: 10px 14px 14px;
+    }
+    .mobile-drawer a{
+      display:block;
+      padding: 12px 12px;
+      border-radius: 12px;
+      text-decoration:none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      margin-top: 10px;
+      font-weight: 800;
+    }
+    .mobile-drawer a:hover{
+      border-color: var(--primary);
+      background: rgba(56,189,248,.10);
+    }
+
+    /* ===== LAYOUT ===== */
     .container{max-width:1100px;margin:auto;padding: 34px 20px}
     header.hero{ padding: 48px 0 26px; }
-
     .hero-grid{
       display:grid;
       grid-template-columns: 1.25fr .75fr;
       gap: 18px;
       align-items: stretch;
-    }
-    @media (max-width: 900px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .nav-inner{ align-items:flex-start; }
     }
 
     .panel{
@@ -185,24 +220,10 @@
       box-shadow: var(--shadow);
     }
 
-    .hero h1{
-      font-size: 2.4rem;
-      line-height: 1.12;
-      margin-bottom: 10px;
-      letter-spacing: .2px;
-    }
-    .hero p{
-      color: var(--text-soft);
-      font-size: 1.05rem;
-      margin-bottom: 18px;
-    }
+    .hero h1{ font-size: 2.4rem; line-height: 1.12; margin-bottom: 10px; letter-spacing: .2px; }
+    .hero p{ color: var(--text-soft); font-size: 1.05rem; margin-bottom: 18px; }
 
-    .pill{
-      display:inline-flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 6px 0 18px;
-    }
+    .pill{ display:inline-flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 18px; }
     .chip{
       font-size: .85rem;
       padding: 7px 10px;
@@ -220,8 +241,8 @@
       font-size: 1.25rem;
     }
 
+    /* ===== BUTTONS ===== */
     .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top: 12px}
-
     .btn{
       display:inline-block;
       padding:10px 15px;
@@ -255,7 +276,7 @@
     }
     .hero-actions .btn{ width:100%; text-align:center; }
 
-
+    /* WhatsApp azul com texto só no hover */
     .btn--whatsapp-hover{
       background: var(--primary);
       color: #020617;
@@ -271,38 +292,25 @@
 
       transition: width .25s ease, padding .25s ease, background .2s ease;
     }
-
     .btn--whatsapp-hover:hover{
       background: var(--primary-hover);
       width: 210px;
       padding: 10px 16px;
     }
-
-    .wa-icon{
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
+    .wa-icon{ font-size: 18px; flex-shrink: 0; }
     .wa-label{
       opacity: 0;
       transform: translateX(-8px);
       transition: opacity .2s ease, transform .25s ease;
     }
-
-    .btn--whatsapp-hover:hover .wa-label{
-      opacity: 1;
-      transform: translateX(0);
-    }
+    .btn--whatsapp-hover:hover .wa-label{ opacity: 1; transform: translateX(0); }
 
     section{ margin-top: 42px; }
-
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 14px;
     }
-    @media (max-width: 900px){ .grid-3{ grid-template-columns: 1fr; } }
-
     .card{
       background: color-mix(in srgb, var(--card) 86%, transparent);
       border: 1px solid var(--border);
@@ -322,7 +330,6 @@
     }
 
     .faq{ display:grid; gap: 10px; }
-
     details{
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -353,7 +360,6 @@
       font-weight: 700;
     }
     .contact a:hover{ text-decoration: underline; }
-
     .muted{ color: var(--text-soft); }
 
     footer{
@@ -363,39 +369,88 @@
       color: var(--text-soft);
       margin-top: 40px;
     }
+    a:focus, button:focus{ outline: none; box-shadow: var(--ring); }
 
-    a:focus, button:focus{
-      outline: none;
-      box-shadow: var(--ring);
+    /* ===== MOBILE IMPROVEMENTS ===== */
+    @media (max-width: 768px){
+      .nav-inner{
+        padding: 10px 12px;
+        justify-content: center;     /* centraliza */
+        gap: 10px;
+      }
+
+      .brand{
+        flex: 1;
+        justify-content: center;     /* centraliza nome */
+      }
+
+      /* esconde links desktop e mostra botões compactos */
+      .nav-links a{ display:none; }
+
+      .menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
+      .theme-btn{
+        padding: 8px 8px;
+        gap: 8px;
+      }
+      .toggle{ width: 46px; height: 28px; }
+      .knob{ width: 22px; height: 22px; }
+
+      /* Drawer aparece quando abre */
+      .mobile-drawer{ display:block; }
+
+      /* hero vira 1 coluna e botões ocupam largura */
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-actions{ max-width: 100%; }
+
+      .grid-3{ grid-template-columns: 1fr; }
+      .container{ padding: 22px 14px; }
+      header.hero{ padding: 30px 0 10px; }
+
+      .hero h1{ font-size: 2.05rem; }
     }
+
+    /* Drawer fechado por padrão */
+    .drawer-closed{ display:none; }
   </style>
 </head>
 
 <body>
-  <div class="nav">
+  <!-- NAV -->
+  <div class="nav" id="topNav">
     <div class="nav-inner">
       <div class="brand">
         <div class="title">🎬 Matheus</div>
         <span class="subtitle">Desenvolvedor Web</span>
       </div>
 
-      <div class="nav-links">
-        <a href="#sobre">Sobre</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contato">Contato</a>
+      <!-- Botão menu (só mobile) -->
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span>☰</span>
+      </button>
 
-        <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema">
-          <div class="icon" id="themeIcon">🌙</div>
-          <div class="toggle" aria-hidden="true">
-            <div class="knob"></div>
-          </div>
-        </button>
-      </div>
+      <!-- Tema -->
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema">
+        <div class="icon" id="themeIcon">🌙</div>
+        <div class="toggle" aria-hidden="true">
+          <div class="knob"></div>
+        </div>
+      </button>
+
+      <!-- Links desktop (mantidos para desktop) -->
+      <div class="nav-links" aria-hidden="true" style="display:none"></div>
+    </div>
+
+    <!-- Drawer mobile -->
+    <div class="mobile-drawer drawer-closed" id="mobileDrawer">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
     </div>
   </div>
 
+  <!-- HERO -->
   <div class="container">
     <header class="hero">
       <div class="hero-grid">
@@ -445,6 +500,7 @@
       </div>
     </header>
 
+    <!-- SOBRE -->
     <section id="sobre">
       <h2>Sobre mim</h2>
       <div class="panel">
@@ -456,6 +512,7 @@
       </div>
     </section>
 
+    <!-- SERVIÇOS -->
     <section id="servicos">
       <h2>Serviços</h2>
       <div class="grid-3">
@@ -485,6 +542,7 @@
       </div>
     </section>
 
+    <!-- PROJETOS -->
     <section id="projetos">
       <h2>Projetos</h2>
 
@@ -536,6 +594,7 @@
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
       <h2>FAQ</h2>
 
@@ -577,6 +636,7 @@
       </div>
     </section>
 
+    <!-- CONTATO -->
     <section id="contato" class="contact">
       <h2>Contato</h2>
       <div class="panel">
@@ -605,6 +665,7 @@
   </footer>
 
   <script>
+    // ===== TEMA =====
     const themeBtn = document.getElementById("themeBtn");
     const themeIcon = document.getElementById("themeIcon");
     const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)");
@@ -614,13 +675,11 @@
       themeIcon.textContent = mode === "light" ? "☀️" : "🌙";
       if (persist) localStorage.setItem("theme", mode);
     }
-
     function getInitialTheme(){
       const saved = localStorage.getItem("theme");
       if (saved === "light" || saved === "dark") return saved;
       return mq && mq.matches ? "light" : "dark";
     }
-
     applyTheme(getInitialTheme(), false);
 
     if (mq) {
@@ -634,6 +693,77 @@
     themeBtn.addEventListener("click", () => {
       const isLight = document.body.classList.contains("light");
       applyTheme(isLight ? "dark" : "light", true);
+    });
+
+    // ===== MENU MOBILE (hambúrguer) =====
+    const menuBtn = document.getElementById("menuBtn");
+    const drawer = document.getElementById("mobileDrawer");
+
+    function closeDrawer(){
+      drawer.classList.add("drawer-closed");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.querySelector("span").textContent = "☰";
+    }
+
+    menuBtn.addEventListener("click", () => {
+      const isClosed = drawer.classList.contains("drawer-closed");
+      if (isClosed) {
+        drawer.classList.remove("drawer-closed");
+        menuBtn.setAttribute("aria-expanded", "true");
+        menuBtn.querySelector("span").textContent = "✕";
+      } else {
+        closeDrawer();
+      }
+    });
+
+    // fechar drawer ao clicar em um link
+    drawer.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => closeDrawer());
+    });
+
+    // ===== NAV SOME/DESAPARECE NO CELULAR =====
+    const nav = document.getElementById("topNav");
+    let lastY = window.scrollY;
+    let lockUntil = 0;
+
+    window.addEventListener("scroll", () => {
+      // só aplica o comportamento no mobile
+      if (window.innerWidth > 768) return;
+
+      const now = Date.now();
+      if (now < lockUntil) return;
+
+      const y = window.scrollY;
+      const delta = y - lastY;
+
+      // perto do topo: sempre aparece
+      if (y < 80){
+        nav.classList.remove("nav--hidden");
+        lastY = y;
+        return;
+      }
+
+      // evita tremer com scroll pequeno
+      if (Math.abs(delta) < 8) return;
+
+      if (delta > 0){
+        // rolando pra baixo -> esconde
+        nav.classList.add("nav--hidden");
+        // se o drawer estiver aberto, fecha
+        if (!drawer.classList.contains("drawer-closed")) closeDrawer();
+      } else {
+        // rolando pra cima -> mostra
+        nav.classList.remove("nav--hidden");
+      }
+
+      lastY = y;
+      lockUntil = now + 80; // trava micro pra ficar suave
+    }, { passive: true });
+
+    // ao redimensionar, fecha drawer e mostra nav
+    window.addEventListener("resize", () => {
+      nav.classList.remove("nav--hidden");
+      closeDrawer();
     });
   </script>
 </body>
