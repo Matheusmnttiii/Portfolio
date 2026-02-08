@@ -46,7 +46,7 @@
       transition: background .35s ease, color .25s ease;
     }
 
-    /* ===== NAV (desktop) ===== */
+    
     .nav{
       position: sticky;
       top: 0;
@@ -56,7 +56,7 @@
       border-bottom: 1px solid var(--border);
       transition: transform .22s ease;
     }
-    .nav--hidden{ transform: translateY(-110%); } /* some ao rolar pra baixo */
+    .nav--hidden{ transform: translateY(-110%); } 
 
     .nav-inner{
       max-width: 1100px;
@@ -115,7 +115,7 @@
       background: rgba(255,255,255,.03);
     }
 
-    /* ===== THEME BUTTON ===== */
+   
     .theme-btn{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
@@ -164,7 +164,7 @@
     }
     body.light .icon{ transform: rotate(18deg); }
 
-    /* ===== MOBILE MENU BUTTON ===== */
+ 
     .menu-btn{
       display:none;
       border: 1px solid var(--border);
@@ -180,7 +180,7 @@
     .menu-btn:active{ transform: scale(.98); }
     .menu-btn span{ font-size: 18px; line-height: 1; }
 
-    /* ===== MOBILE DROPDOWN ===== */
+
     .mobile-drawer{
       display:none;
       border-top: 1px solid var(--border);
@@ -202,7 +202,7 @@
       background: rgba(56,189,248,.10);
     }
 
-    /* ===== LAYOUT ===== */
+
     .container{max-width:1100px;margin:auto;padding: 34px 20px}
     header.hero{ padding: 48px 0 26px; }
     .hero-grid{
@@ -241,7 +241,6 @@
       font-size: 1.25rem;
     }
 
-    /* ===== BUTTONS ===== */
     .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top: 12px}
     .btn{
       display:inline-block;
@@ -276,7 +275,7 @@
     }
     .hero-actions .btn{ width:100%; text-align:center; }
 
-    /* WhatsApp azul com texto só no hover */
+  
     .btn--whatsapp-hover{
       background: var(--primary);
       color: #020617;
@@ -371,20 +370,20 @@
     }
     a:focus, button:focus{ outline: none; box-shadow: var(--ring); }
 
-    /* ===== MOBILE IMPROVEMENTS ===== */
+ 
     @media (max-width: 768px){
       .nav-inner{
         padding: 10px 12px;
-        justify-content: center;     /* centraliza */
+        justify-content: center;    
         gap: 10px;
       }
 
       .brand{
         flex: 1;
-        justify-content: center;     /* centraliza nome */
+        justify-content: center;    
       }
 
-      /* esconde links desktop e mostra botões compactos */
+     
       .nav-links a{ display:none; }
 
       .menu-btn{ display:inline-flex; align-items:center; justify-content:center; }
@@ -395,10 +394,9 @@
       .toggle{ width: 46px; height: 28px; }
       .knob{ width: 22px; height: 22px; }
 
-      /* Drawer aparece quando abre */
+
       .mobile-drawer{ display:block; }
 
-      /* hero vira 1 coluna e botões ocupam largura */
       .hero-grid{ grid-template-columns: 1fr; }
       .hero-actions{ max-width: 100%; }
 
@@ -409,26 +407,24 @@
       .hero h1{ font-size: 2.05rem; }
     }
 
-    /* Drawer fechado por padrão */
     .drawer-closed{ display:none; }
   </style>
 </head>
 
 <body>
-  <!-- NAV -->
+
   <div class="nav" id="topNav">
     <div class="nav-inner">
       <div class="brand">
-        <div class="title">🎬 Matheus</div>
+        <div class="title">Matheus</div>
         <span class="subtitle">Desenvolvedor Web</span>
       </div>
 
-      <!-- Botão menu (só mobile) -->
+  
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false">
         <span>☰</span>
       </button>
 
-      <!-- Tema -->
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema">
         <div class="icon" id="themeIcon">🌙</div>
         <div class="toggle" aria-hidden="true">
@@ -436,11 +432,9 @@
         </div>
       </button>
 
-      <!-- Links desktop (mantidos para desktop) -->
       <div class="nav-links" aria-hidden="true" style="display:none"></div>
     </div>
 
-    <!-- Drawer mobile -->
     <div class="mobile-drawer drawer-closed" id="mobileDrawer">
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
@@ -450,7 +444,6 @@
     </div>
   </div>
 
-  <!-- HERO -->
   <div class="container">
     <header class="hero">
       <div class="hero-grid">
@@ -500,7 +493,7 @@
       </div>
     </header>
 
-    <!-- SOBRE -->
+
     <section id="sobre">
       <h2>Sobre mim</h2>
       <div class="panel">
@@ -512,7 +505,7 @@
       </div>
     </section>
 
-    <!-- SERVIÇOS -->
+
     <section id="servicos">
       <h2>Serviços</h2>
       <div class="grid-3">
@@ -542,7 +535,7 @@
       </div>
     </section>
 
-    <!-- PROJETOS -->
+  
     <section id="projetos">
       <h2>Projetos</h2>
 
@@ -594,7 +587,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
       <h2>FAQ</h2>
 
@@ -636,7 +628,7 @@
       </div>
     </section>
 
-    <!-- CONTATO -->
+ 
     <section id="contato" class="contact">
       <h2>Contato</h2>
       <div class="panel">
@@ -665,7 +657,7 @@
   </footer>
 
   <script>
-    // ===== TEMA =====
+ 
     const themeBtn = document.getElementById("themeBtn");
     const themeIcon = document.getElementById("themeIcon");
     const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)");
@@ -695,7 +687,6 @@
       applyTheme(isLight ? "dark" : "light", true);
     });
 
-    // ===== MENU MOBILE (hambúrguer) =====
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("mobileDrawer");
 
@@ -716,18 +707,18 @@
       }
     });
 
-    // fechar drawer ao clicar em um link
+
     drawer.querySelectorAll("a").forEach(a => {
       a.addEventListener("click", () => closeDrawer());
     });
 
-    // ===== NAV SOME/DESAPARECE NO CELULAR =====
+    
     const nav = document.getElementById("topNav");
     let lastY = window.scrollY;
     let lockUntil = 0;
 
     window.addEventListener("scroll", () => {
-      // só aplica o comportamento no mobile
+
       if (window.innerWidth > 768) return;
 
       const now = Date.now();
@@ -736,31 +727,25 @@
       const y = window.scrollY;
       const delta = y - lastY;
 
-      // perto do topo: sempre aparece
       if (y < 80){
         nav.classList.remove("nav--hidden");
         lastY = y;
         return;
       }
 
-      // evita tremer com scroll pequeno
       if (Math.abs(delta) < 8) return;
 
       if (delta > 0){
-        // rolando pra baixo -> esconde
         nav.classList.add("nav--hidden");
-        // se o drawer estiver aberto, fecha
         if (!drawer.classList.contains("drawer-closed")) closeDrawer();
       } else {
-        // rolando pra cima -> mostra
         nav.classList.remove("nav--hidden");
       }
 
       lastY = y;
-      lockUntil = now + 80; // trava micro pra ficar suave
+      lockUntil = now + 80; 
     }, { passive: true });
 
-    // ao redimensionar, fecha drawer e mostra nav
     window.addEventListener("resize", () => {
       nav.classList.remove("nav--hidden");
       closeDrawer();
@@ -768,3 +753,4 @@
   </script>
 </body>
 </html>
+
