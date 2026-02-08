@@ -45,7 +45,6 @@
       transition: background .35s ease, color .25s ease;
     }
 
-    /* ===== NAV ===== */
     .nav{
       position: sticky;
       top: 0;
@@ -114,7 +113,6 @@
       background: rgba(255,255,255,.03);
     }
 
-    /* ===== THEME BUTTON ===== */
     .theme-btn{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
@@ -162,7 +160,6 @@
     }
     body.light .icon{ transform: rotate(18deg); }
 
-    /* ===== MOBILE MENU ===== */
     .menu-btn{
       display:none;
       border: 1px solid var(--border);
@@ -200,7 +197,6 @@
     }
     .drawer-closed{ display:none; }
 
-    /* ===== LAYOUT ===== */
     .container{max-width:1120px;margin:auto;padding: 34px 18px}
     .panel{
       background: color-mix(in srgb, var(--card) 88%, transparent);
@@ -210,7 +206,6 @@
       box-shadow: var(--shadow);
     }
 
-    /* ===== HERO ===== */
     header.hero{ padding: 22px 0 6px; }
     .hero-grid{
       display:grid;
@@ -264,7 +259,6 @@
       font-weight: 800;
     }
 
-    /* ===== CTA BUTTONS ===== */
     .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top: 10px}
     .btn{
       display:inline-flex;
@@ -293,7 +287,6 @@
       background: rgba(56,189,248,.10);
       border-color: var(--primary);
     }
-    /* CTA zap no estilo "soft" (cor de fundo) */
     .btn--soft.btn--zap:hover{
       background: rgba(56,189,248,.10);
       border-color: var(--primary);
@@ -315,7 +308,6 @@
       line-height: 1.1;
     }
 
-    /* ===== SECTIONS ===== */
     section{ margin-top: 44px; }
     h2{
       margin: 0 0 16px;
@@ -362,13 +354,6 @@
       border: 1px solid color-mix(in srgb, var(--primary) 50%, transparent);
     }
 
-    /* ===== PRICING ===== */
-    .price{
-      display:flex; align-items:baseline; gap: 10px; margin: 6px 0 10px;
-      font-weight: 900;
-    }
-    .price strong{ font-size: 1.6rem; }
-    .price span{ color: var(--text-soft); font-weight: 800; font-size: .9rem; }
     .tag{
       display:inline-flex;
       align-items:center;
@@ -387,14 +372,12 @@
       box-shadow: 0 22px 60px rgba(56,189,248,.10);
     }
 
-    /* ===== PROJECTS ===== */
     .projects{
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 14px;
     }
 
-    /* ===== FAQ ===== */
     .faq{ display:grid; gap: 10px; }
     details{
       border: 1px solid var(--border);
@@ -418,7 +401,6 @@
     details[open] .caret{ transform: rotate(180deg); }
     .faq-body{ padding: 0 16px 14px; color: var(--text-soft); font-weight: 700; }
 
-    /* ===== CONTACT ===== */
     .contact a{
       color: var(--primary);
       text-decoration:none;
@@ -428,7 +410,7 @@
     }
     .contact a:hover{ text-decoration: underline; }
 
-    /* ===== FOOTER ===== */
+
     footer{
       text-align:center;
       padding: 28px 18px;
@@ -442,7 +424,7 @@
       box-shadow: var(--ring);
     }
 
-    /* ===== FLOATING WHATSAPP ===== */
+
     .zap-float{
       position: fixed;
       right: 16px;
@@ -467,7 +449,43 @@
       .zap-float .zap-text{ display:inline; }
     }
 
-    /* ===== MOBILE IMPROVEMENTS ===== */
+    .form{
+      display:grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .field{
+      display:grid;
+      gap: 6px;
+    }
+    .label{
+      font-weight: 900;
+      color: var(--text);
+      font-size: .95rem;
+    }
+    .input, .select, .textarea{
+      width: 100%;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 12px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+      font-weight: 800;
+    }
+    .textarea{ min-height: 96px; resize: vertical; }
+    .input::placeholder, .textarea::placeholder{ color: color-mix(in srgb, var(--text-soft) 85%, transparent); font-weight: 700; }
+    .input:focus, .select:focus, .textarea:focus{
+      border-color: var(--primary);
+      box-shadow: var(--ring);
+    }
+    .help{
+      color: var(--text-soft);
+      font-weight: 700;
+      font-size: .92rem;
+    }
+
     @media (max-width: 860px){
       .hero-grid{ grid-template-columns: 1fr; }
       .grid-3{ grid-template-columns: 1fr; }
@@ -490,7 +508,6 @@
         justify-content: space-between;
       }
 
-      /* no mobile, ctas em full width e texto mais legível */
       .btns .btn{ width: 100%; }
       .zap-float{ right: 14px; bottom: 14px; }
     }
@@ -498,7 +515,6 @@
 </head>
 
 <body>
-  <!-- NAV -->
   <div class="nav" id="topNav">
     <div class="nav-inner">
       <div class="brand">
@@ -507,21 +523,18 @@
       </div>
 
       <div class="nav-links">
-        <!-- Links desktop -->
         <a href="#sobre">Sobre</a>
-        <a href="#servicos">Serviços</a>
+        <a href="#servicos">Serviço</a>
         <a href="#processo">Como funciona</a>
-        <a href="#precos">Preços</a>
+        <a href="#precos">Orçamento</a>
         <a href="#projetos">Projetos</a>
         <a href="#faq">FAQ</a>
         <a href="#contato">Contato</a>
 
-        <!-- Hambúrguer (mobile) -->
         <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false">
           <span>☰</span>
         </button>
 
-        <!-- Tema -->
         <button class="theme-btn" id="themeBtn" type="button" aria-label="Alternar tema">
           <div class="icon" id="themeIcon">🌙</div>
           <div class="toggle" aria-hidden="true">
@@ -531,29 +544,25 @@
       </div>
     </div>
 
-    <!-- Drawer mobile -->
     <div class="mobile-drawer drawer-closed" id="mobileDrawer">
       <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
+      <a href="#servicos">Serviço</a>
       <a href="#processo">Como funciona</a>
-      <a href="#precos">Preços</a>
+      <a href="#precos">Orçamento</a>
       <a href="#projetos">Projetos</a>
       <a href="#faq">FAQ</a>
       <a href="#contato">Contato</a>
     </div>
   </div>
 
-  <!-- FLOATING WHATSAPP -->
   <a class="zap-float" id="zapFloat" href="#" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
     <span aria-hidden="true">💬</span>
     <span class="zap-text">Pedir orçamento</span>
   </a>
 
-  <!-- CONTENT -->
   <div class="container">
     <header class="hero">
       <div class="hero-grid">
-        <!-- HERO MAIN -->
         <div class="panel">
           <div class="eyebrow">
             <span class="badge">Sites que geram clientes</span>
@@ -562,8 +571,8 @@
 
           <h1>Eu crio sites profissionais para negócios e projetos — com foco em conversão e WhatsApp.</h1>
           <p>
-            Landing pages, sites institucionais e cardápios digitais. Você mostra seu serviço com credibilidade e recebe mensagens
-            de clientes com mais facilidade.
+            Você terá um site moderno, rápido e pensado para funcionar no celular. Estrutura bem organizada, visual limpo e botões
+            que levam o cliente direto para o contato.
           </p>
 
           <div class="pill">
@@ -575,7 +584,6 @@
           </div>
 
           <div class="hero-actions">
-            <!-- AGORA: botão do zap no estilo "soft" (cor de fundo) -->
             <a class="btn btn--soft btn--zap" id="ctaZapTop" href="#" target="_blank" rel="noopener">
               <span aria-hidden="true">💬</span>
               <span>
@@ -592,7 +600,6 @@
           </div>
         </div>
 
-        <!-- HERO SIDE -->
         <div class="panel">
           <h2 style="margin-top:0">Para quem eu faço</h2>
           <p class="muted">Funciona para praticamente qualquer público que precisa aparecer e vender.</p>
@@ -617,7 +624,6 @@
       </div>
     </header>
 
-    <!-- SOBRE -->
     <section id="sobre">
       <h2>Sobre</h2>
       <div class="panel">
@@ -628,52 +634,42 @@
       </div>
     </section>
 
-    <!-- SERVIÇOS -->
     <section id="servicos">
-      <h2>Serviços</h2>
-      <div class="grid-3">
-        <div class="card">
-          <span class="tag"><b>Mais pedido</b> • Conversão</span>
-          <h3>Landing Page</h3>
-          <p>Uma página direta para vender seu serviço/produto, com CTA forte e foco em WhatsApp.</p>
-          <div class="list">
-            <div><span class="dot"></span><span>Seções persuasivas (benefícios, prova, CTA)</span></div>
-            <div><span class="dot"></span><span>Responsivo e rápido</span></div>
-            <div><span class="dot"></span><span>SEO básico</span></div>
+      <h2>Serviço</h2>
+      <div class="panel">
+        <p class="muted" style="margin-bottom:12px">
+          Eu desenvolvo sites sob medida para o seu objetivo: vender, apresentar seu negócio ou facilitar pedidos/contato.
+          O foco é entregar um visual profissional, navegação simples e rápida, e uma estrutura que gera confiança no cliente.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>O que eu entrego</h3>
+            <div class="list">
+              <div><span class="dot"></span><span>Layout moderno e responsivo (mobile-first)</span></div>
+              <div><span class="dot"></span><span>Conteúdo bem organizado (seções/páginas claras)</span></div>
+              <div><span class="dot"></span><span>Botões de CTA e contato bem posicionados</span></div>
+              <div><span class="dot"></span><span>Performance e SEO básico para o site carregar rápido</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Como a gente faz</h3>
+            <div class="list">
+              <div><span class="dot"></span><span>Você me manda objetivo + referências + conteúdo</span></div>
+              <div><span class="dot"></span><span>Eu monto o layout e te envio para revisão</span></div>
+              <div><span class="dot"></span><span>Ajustamos e publico (GitHub Pages ou hospedagem)</span></div>
+              <div><span class="dot"></span><span>Se precisar, faço melhorias depois</span></div>
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <span class="tag"><b>Mais completo</b> • Credibilidade</span>
-          <h3>Site Institucional</h3>
-          <p>Para empresas: páginas, serviços, sobre, contato, e organização profissional.</p>
-          <div class="list">
-            <div><span class="dot"></span><span>Estrutura em seções/páginas</span></div>
-            <div><span class="dot"></span><span>Visual profissional</span></div>
-            <div><span class="dot"></span><span>CTA + formulário/WhatsApp</span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="tag"><b>Interativo</b> • Catálogo</span>
-          <h3>Catálogo / Cardápio Digital</h3>
-          <p>Listas, categorias, filtro/busca e botão “pedir” via WhatsApp.</p>
-          <div class="list">
-            <div><span class="dot"></span><span>Categorias + busca</span></div>
-            <div><span class="dot"></span><span>Pedido via WhatsApp</span></div>
-            <div><span class="dot"></span><span>Experiência mobile</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel" style="margin-top:14px">
-        <div class="muted">
-          Quer orçamento mais rápido? Envie no WhatsApp: <b style="color:var(--text)">tipo de site</b>, <b style="color:var(--text)">prazo</b> e <b style="color:var(--text)">referência</b> (se tiver).
+        <div class="muted" style="margin-top:14px">
+          Para orçamento mais rápido, mande no WhatsApp: <b style="color:var(--text)">tipo de site</b>, <b style="color:var(--text)">prazo</b> e <b style="color:var(--text)">referência</b> (se tiver).
         </div>
       </div>
     </section>
 
-    <!-- PROCESSO -->
     <section id="processo">
       <h2>Como funciona</h2>
       <div class="grid-2">
@@ -712,63 +708,84 @@
       </div>
     </section>
 
-    <!-- PREÇOS -->
     <section id="precos">
-      <h2>Preços iniciais</h2>
-      <div class="muted" style="margin-bottom:12px">
-        Valores iniciais para dar referência. O preço final depende de páginas, seções e funcionalidades.
-      </div>
+      <h2>Orçamento</h2>
 
-      <div class="grid-3">
-        <div class="card">
-          <span class="tag">Ideal para <b>serviços</b></span>
-          <h3>Landing Page</h3>
-          <div class="price"><strong>R$ 150+</strong> <span>valor inicial</span></div>
-          <div class="list">
-            <div><span class="dot"></span><span>Seções (benefícios, CTA, contato)</span></div>
-            <div><span class="dot"></span><span>Responsivo + performance</span></div>
-            <div><span class="dot"></span><span>Botão WhatsApp + mensagem</span></div>
+      <div class="panel">
+        <p class="muted">
+          Cada projeto é único. Para eu te passar um valor certeiro, me diga o tipo de site, prazo e o que você quer incluir.
+          Você pode preencher o formulário abaixo que eu já recebo tudo no WhatsApp.
+        </p>
+
+        <div class="grid-2" style="margin-top:14px">
+          <div class="card">
+            <h3>Preencha em 20 segundos</h3>
+
+            <form class="form" id="quoteForm" autocomplete="off">
+              <div class="field">
+                <div class="label">Seu nome</div>
+                <input class="input" id="qName" type="text" placeholder="Ex: Matheus" />
+              </div>
+
+              <div class="field">
+                <div class="label">Tipo de site</div>
+                <select class="select" id="qType">
+                  <option value="">Selecione…</option>
+                  <option value="Landing Page">Landing Page</option>
+                  <option value="Site Institucional">Site Institucional</option>
+                  <option value="Catálogo / Cardápio">Catálogo / Cardápio</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">Prazo (quando precisa)</div>
+                <input class="input" id="qDeadline" type="text" placeholder="Ex: 7 dias / até sexta / este mês" />
+              </div>
+
+              <div class="field">
+                <div class="label">Referência (opcional)</div>
+                <input class="input" id="qRef" type="url" placeholder="Link de exemplo (se tiver)" />
+              </div>
+
+              <div class="field">
+                <div class="label">Detalhes (opcional)</div>
+                <textarea class="textarea" id="qDetails" placeholder="Ex: quero formulário, botão WhatsApp, 3 seções, etc."></textarea>
+              </div>
+
+              <button class="btn btn--soft btn--zap" type="submit" id="sendQuote">
+                💬 Enviar no WhatsApp
+              </button>
+
+              <div class="help">
+                *Ao enviar, o WhatsApp abre com a mensagem já preenchida.
+              </div>
+            </form>
           </div>
-        </div>
 
-        <div class="card card--highlight">
-          <span class="tag"><b>Mais vendido</b> • Profissional</span>
-          <h3>Institucional</h3>
-          <div class="price"><strong>R$ 250+</strong> <span>valor inicial</span></div>
-          <div class="list">
-            <div><span class="dot"></span><span>Estrutura completa do negócio</span></div>
-            <div><span class="dot"></span><span>Seções extras (FAQ, serviços)</span></div>
-            <div><span class="dot"></span><span>Layout moderno e organizado</span></div>
+          <div class="card card--highlight">
+            <h3>Preferir mandar direto?</h3>
+            <p class="muted">
+              Sem problema. Clique no botão e eu te guio pelas perguntas.
+            </p>
+
+            <div class="btns" style="margin-top:12px">
+              <a class="btn btn--soft btn--zap" id="ctaZapPrices" href="#" target="_blank" rel="noopener">
+                💬 Pedir orçamento no WhatsApp
+              </a>
+              <a class="btn btn--soft" href="#projetos">Ver exemplos</a>
+            </div>
+
+            <div class="list" style="margin-top:14px">
+              <div><span class="dot"></span><span>Resposta rápida</span></div>
+              <div><span class="dot"></span><span>Orçamento claro</span></div>
+              <div><span class="dot"></span><span>Sem enrolação</span></div>
+            </div>
           </div>
-        </div>
-
-        <div class="card">
-          <span class="tag">Ideal para <b>restaurantes</b></span>
-          <h3>Catálogo / Cardápio</h3>
-          <div class="price"><strong>R$ 300+</strong> <span>valor inicial</span></div>
-          <div class="list">
-            <div><span class="dot"></span><span>Categorias + busca</span></div>
-            <div><span class="dot"></span><span>Pedido via WhatsApp</span></div>
-            <div><span class="dot"></span><span>Feito pra celular</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel" style="margin-top:14px">
-        <div class="muted">
-          Quer fechar rápido? Clique em “Pedir orçamento” e já vai uma mensagem pronta.
-        </div>
-        <div class="btns" style="margin-top:12px">
-          <!-- AGORA: botão do zap no estilo "soft" (cor de fundo) -->
-          <a class="btn btn--soft btn--zap" id="ctaZapPrices" href="#" target="_blank" rel="noopener">
-            💬 Pedir orçamento no WhatsApp
-          </a>
-          <a class="btn btn--soft" href="#projetos">Ver exemplos</a>
         </div>
       </div>
     </section>
-
-    <!-- PROJETOS -->
+    
     <section id="projetos">
       <h2>Projetos</h2>
 
@@ -820,15 +837,15 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+  
     <section id="faq">
       <h2>FAQ</h2>
       <div class="faq">
         <details>
-          <summary>Quanto custa um site? <span class="caret">▾</span></summary>
+          <summary>Como funciona o orçamento? <span class="caret">▾</span></summary>
           <div class="faq-body">
-            Depende do tipo (landing, institucional, catálogo) e do que precisa (seções, páginas, funcionalidades).
-            Eu te passo um orçamento rápido após entender objetivo + prazo + referência.
+            Eu faço um orçamento rápido após entender: tipo de site, prazo, quantidade de seções/páginas e funcionalidades.
+            Se você mandar uma referência, eu consigo estimar ainda mais certeiro.
           </div>
         </details>
 
@@ -862,8 +879,7 @@
         </details>
       </div>
     </section>
-
-    <!-- CONTATO -->
+    
     <section id="contato" class="contact">
       <h2>Contato</h2>
       <div class="panel">
@@ -876,11 +892,10 @@
         </p>
 
         <div class="btns" style="margin-top:14px">
-          <!-- AGORA: botão do zap no estilo "soft" (cor de fundo) -->
           <a class="btn btn--soft btn--zap" id="ctaZapBottom" href="#" target="_blank" rel="noopener">
             💬 Pedir orçamento no WhatsApp
           </a>
-          <a class="btn btn--soft" href="#precos">Ver preços</a>
+          <a class="btn btn--soft" href="#projetos">Ver projetos</a>
         </div>
       </div>
     </section>
@@ -891,22 +906,44 @@
   </footer>
 
   <script>
-    // ===== WhatsApp com mensagem pronta =====
     const phone = "5567998690241";
-    const msg = encodeURIComponent(
+
+    const baseMsg = encodeURIComponent(
       "Olá Matheus! Quero um site.\n\n" +
       "Tipo de site: (Landing / Institucional / Catálogo)\n" +
       "Área/negócio: \n" +
       "Prazo: \n" +
       "Referência (link ou exemplo): \n"
     );
-    const waLink = `https://wa.me/${phone}?text=${msg}`;
-    document.getElementById("ctaZapTop").href = waLink;
-    document.getElementById("ctaZapPrices").href = waLink;
-    document.getElementById("ctaZapBottom").href = waLink;
-    document.getElementById("zapFloat").href = waLink;
+    const waBase = `https://wa.me/${phone}?text=${baseMsg}`;
+    document.getElementById("ctaZapTop").href = waBase;
+    document.getElementById("ctaZapPrices").href = waBase;
+    document.getElementById("ctaZapBottom").href = waBase;
+    document.getElementById("zapFloat").href = waBase;
 
-    // ===== Tema (auto + toggle) =====
+
+    const quoteForm = document.getElementById("quoteForm");
+    quoteForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = (document.getElementById("qName").value || "").trim();
+      const type = (document.getElementById("qType").value || "").trim();
+      const deadline = (document.getElementById("qDeadline").value || "").trim();
+      const ref = (document.getElementById("qRef").value || "").trim();
+      const details = (document.getElementById("qDetails").value || "").trim();
+
+      const message =
+        "Olá Matheus! Quero um orçamento.\n\n" +
+        `Nome: ${name || "-"}\n` +
+        `Tipo de site: ${type || "-"}\n` +
+        `Prazo: ${deadline || "-"}\n` +
+        `Referência: ${ref || "-"}\n` +
+        `Detalhes: ${details || "-"}\n`;
+
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener");
+    });
+
     const themeBtn = document.getElementById("themeBtn");
     const themeIcon = document.getElementById("themeIcon");
     const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)");
@@ -935,7 +972,6 @@
       applyTheme(isLight ? "dark" : "light", true);
     });
 
-    // ===== Menu mobile =====
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("mobileDrawer");
 
@@ -956,7 +992,6 @@
     });
     drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", closeDrawer));
 
-    // ===== Nav some ao rolar pra baixo e volta ao rolar pra cima (mobile) =====
     const nav = document.getElementById("topNav");
     let lastY = window.scrollY;
     let lockUntil = 0;
