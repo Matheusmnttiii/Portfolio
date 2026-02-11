@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matheus | Desenvolvedor Web</title>
 
+
+  <meta name="description" content="Portfólio de Matheus — Desenvolvedor Web. Criação de sites e landing pages responsivas, rápidas e com foco em conversão via WhatsApp. HTML, CSS, JavaScript, TypeScript e Git/GitHub." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://matheusmnttiii.github.io/Portfolio/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Matheus | Desenvolvedor Web" />
+  <meta property="og:description" content="Sites e landing pages rápidas, responsivas e com foco em conversão. Projetos + GitHub." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://matheusmnttiii.github.io/Portfolio/" />
+
+
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif}
     html{scroll-behavior:smooth}
@@ -44,6 +56,20 @@
       line-height: 1.6;
       transition: background .35s ease, color .25s ease;
     }
+
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:10px;
+      background: var(--primary);
+      color:#020617;
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight: 900;
+      z-index: 9999;
+      text-decoration:none;
+    }
+    .skip-link:focus{ left: 14px; box-shadow: var(--ring); }
 
     .nav{
       position: sticky;
@@ -180,6 +206,7 @@
       padding: 10px 14px 14px;
       display:none;
     }
+    .mobile-drawer:not(.drawer-closed){ display:block; }
     .mobile-drawer a{
       display:block;
       padding: 12px 12px;
@@ -378,6 +405,22 @@
       gap: 14px;
     }
 
+    .project-meta{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill-mini{
+      font-size: .78rem;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--text-soft);
+      font-weight: 900;
+    }
+
     .faq{ display:grid; gap: 10px; }
     details{
       border: 1px solid var(--border);
@@ -410,7 +453,6 @@
     }
     .contact a:hover{ text-decoration: underline; }
 
-
     footer{
       text-align:center;
       padding: 28px 18px;
@@ -419,11 +461,10 @@
       margin-top: 40px;
     }
 
-    a:focus, button:focus{
+    a:focus, button:focus, input:focus, select:focus, textarea:focus{
       outline: none;
       box-shadow: var(--ring);
     }
-
 
     .zap-float{
       position: fixed;
@@ -485,6 +526,7 @@
       font-weight: 700;
       font-size: .92rem;
     }
+    .input:invalid, .select:invalid, .textarea:invalid { border-color: rgba(239,68,68,.6); }
 
     @media (max-width: 860px){
       .hero-grid{ grid-template-columns: 1fr; }
@@ -501,7 +543,6 @@
 
       .nav-links a{ display:none; }
       .menu-btn{ display:inline-flex; }
-      .mobile-drawer{ display:block; }
 
       .nav-inner{
         padding: 10px 12px;
@@ -511,14 +552,21 @@
       .btns .btn{ width: 100%; }
       .zap-float{ right: 14px; bottom: 14px; }
     }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; }
+      .card, .btn, .nav, .knob, .icon{ transition:none !important; }
+    }
   </style>
 </head>
 
 <body>
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
   <div class="nav" id="topNav">
     <div class="nav-inner">
       <div class="brand">
-        <div class="title">🎬 Matheus</div>
+        <div class="title"> Matheus</div>
         <span class="subtitle">Desenvolvedor Web</span>
       </div>
 
@@ -531,7 +579,7 @@
         <a href="#faq">FAQ</a>
         <a href="#contato">Contato</a>
 
-        <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileDrawer">
           <span>☰</span>
         </button>
 
@@ -544,7 +592,7 @@
       </div>
     </div>
 
-    <div class="mobile-drawer drawer-closed" id="mobileDrawer">
+    <div class="mobile-drawer drawer-closed" id="mobileDrawer" role="navigation" aria-label="Menu mobile">
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviço</a>
       <a href="#processo">Como funciona</a>
@@ -560,7 +608,7 @@
     <span class="zap-text">Pedir orçamento</span>
   </a>
 
-  <div class="container">
+  <main class="container" id="conteudo" role="main">
     <header class="hero">
       <div class="hero-grid">
         <div class="panel">
@@ -572,7 +620,7 @@
           <h1>Eu crio sites profissionais para negócios e projetos — com foco em conversão e WhatsApp.</h1>
           <p>
             Você terá um site moderno, rápido e pensado para funcionar no celular. Estrutura bem organizada, visual limpo e botões
-            que levam o cliente direto para o contato.
+            que levam o cliente direto para o contato. Também consigo adaptar páginas no WordPress/Elementor e fazer ajustes com HTML/CSS/JS quando necessário.
           </p>
 
           <div class="pill">
@@ -581,6 +629,7 @@
             <span class="chip">🔎 SEO básico</span>
             <span class="chip">🧩 Interface moderna</span>
             <span class="chip">📲 CTA no WhatsApp</span>
+            <span class="chip">🧱 WordPress/Elementor (ajustes)</span>
           </div>
 
           <div class="hero-actions">
@@ -618,6 +667,7 @@
               <div><span class="dot"></span><span>Site rápido no celular</span></div>
               <div><span class="dot"></span><span>Chamada pra ação (CTA) forte</span></div>
               <div><span class="dot"></span><span>Estrutura feita pra converter</span></div>
+              <div><span class="dot"></span><span>Ajustes rápidos em WordPress/Elementor quando necessário</span></div>
             </div>
           </div>
         </div>
@@ -630,7 +680,17 @@
         <p>
           Sou o Matheus, estudante de Engenharia de Software e técnico em Informática para Internet pelo IFMS.
           Eu construo sites modernos, rápidos e responsivos, com estrutura pensada para conversão (principalmente via WhatsApp).
+          Tenho base forte em HTML, CSS, JavaScript/TypeScript e Git/GitHub, e também atuo com ajustes e montagem de páginas em WordPress/Elementor quando o projeto pede.
         </p>
+
+        <div class="project-meta" style="margin-top:14px">
+          <span class="pill-mini">HTML</span>
+          <span class="pill-mini">CSS</span>
+          <span class="pill-mini">JavaScript</span>
+          <span class="pill-mini">TypeScript</span>
+          <span class="pill-mini">Git/GitHub</span>
+          <span class="pill-mini">WordPress/Elementor (ajustes)</span>
+        </div>
       </div>
     </section>
 
@@ -640,6 +700,7 @@
         <p class="muted" style="margin-bottom:12px">
           Eu desenvolvo sites sob medida para o seu objetivo: vender, apresentar seu negócio ou facilitar pedidos/contato.
           O foco é entregar um visual profissional, navegação simples e rápida, e uma estrutura que gera confiança no cliente.
+          Se o cliente já usa WordPress, também posso apoiar com criação/ajustes de páginas via Elementor e ajustes no front (HTML/CSS/JS).
         </p>
 
         <div class="grid-2">
@@ -650,6 +711,7 @@
               <div><span class="dot"></span><span>Conteúdo bem organizado (seções/páginas claras)</span></div>
               <div><span class="dot"></span><span>Botões de CTA e contato bem posicionados</span></div>
               <div><span class="dot"></span><span>Performance e SEO básico para o site carregar rápido</span></div>
+              <div><span class="dot"></span><span>Ajustes de página em WordPress/Elementor (quando necessário)</span></div>
             </div>
           </div>
 
@@ -658,7 +720,7 @@
             <div class="list">
               <div><span class="dot"></span><span>Você me manda objetivo + referências + conteúdo</span></div>
               <div><span class="dot"></span><span>Eu monto o layout e te envio para revisão</span></div>
-              <div><span class="dot"></span><span>Ajustamos e publico (GitHub Pages ou hospedagem)</span></div>
+              <div><span class="dot"></span><span>Ajustamos e publico (GitHub Pages, hospedagem ou WordPress)</span></div>
               <div><span class="dot"></span><span>Se precisar, faço melhorias depois</span></div>
             </div>
           </div>
@@ -687,11 +749,12 @@
           <div class="list">
             <div><span class="dot"></span><span>Layout moderno e responsivo</span></div>
             <div><span class="dot"></span><span>Correções rápidas</span></div>
+            <div><span class="dot"></span><span>Se for WordPress, ajustes pelo Elementor + CSS</span></div>
           </div>
         </div>
         <div class="card">
           <h3>3) Publicação</h3>
-          <p>Coloco no ar (GitHub Pages ou hospedagem) e te entrego o link.</p>
+          <p>Coloco no ar (GitHub Pages, hospedagem ou WordPress) e te entrego o link.</p>
           <div class="list">
             <div><span class="dot"></span><span>Orientação sobre domínio/hospedagem</span></div>
             <div><span class="dot"></span><span>Site pronto pra compartilhar</span></div>
@@ -703,6 +766,7 @@
           <div class="list">
             <div><span class="dot"></span><span>Alterações pontuais</span></div>
             <div><span class="dot"></span><span>Melhorias de conversão</span></div>
+            <div><span class="dot"></span><span>Ajustes no WordPress/Elementor (páginas e seções)</span></div>
           </div>
         </div>
       </div>
@@ -724,23 +788,24 @@
             <form class="form" id="quoteForm" autocomplete="off">
               <div class="field">
                 <div class="label">Seu nome</div>
-                <input class="input" id="qName" type="text" placeholder="Ex: Matheus" />
+                <input class="input" id="qName" type="text" placeholder="Ex: Matheus" required />
               </div>
 
               <div class="field">
                 <div class="label">Tipo de site</div>
-                <select class="select" id="qType">
+                <select class="select" id="qType" required>
                   <option value="">Selecione…</option>
                   <option value="Landing Page">Landing Page</option>
                   <option value="Site Institucional">Site Institucional</option>
                   <option value="Catálogo / Cardápio">Catálogo / Cardápio</option>
+                  <option value="WordPress/Elementor">WordPress/Elementor</option>
                   <option value="Outro">Outro</option>
                 </select>
               </div>
 
               <div class="field">
                 <div class="label">Prazo (quando precisa)</div>
-                <input class="input" id="qDeadline" type="text" placeholder="Ex: 7 dias / até sexta / este mês" />
+                <input class="input" id="qDeadline" type="text" placeholder="Ex: 7 dias / até sexta / este mês" required />
               </div>
 
               <div class="field">
@@ -780,12 +845,13 @@
               <div><span class="dot"></span><span>Resposta rápida</span></div>
               <div><span class="dot"></span><span>Orçamento claro</span></div>
               <div><span class="dot"></span><span>Sem enrolação</span></div>
+              <div><span class="dot"></span><span>Se for WordPress, eu oriento o melhor caminho</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
+
     <section id="projetos">
       <h2>Projetos</h2>
 
@@ -793,7 +859,12 @@
         <div class="card">
           <h3>Site de Restaurante</h3>
           <p>Cardápio por categorias, busca, carrinho e finalização via WhatsApp.</p>
-          <div class="btns">
+          <div class="project-meta">
+            <span class="pill-mini">Responsivo</span>
+            <span class="pill-mini">UX/Conversão</span>
+            <span class="pill-mini">WhatsApp CTA</span>
+          </div>
+          <div class="btns" style="margin-top:12px">
             <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">Código</a>
           </div>
@@ -802,7 +873,12 @@
         <div class="card">
           <h3>Landing Page Comercial</h3>
           <p>Página para divulgação de serviços locais com foco em conversão.</p>
-          <div class="btns">
+          <div class="project-meta">
+            <span class="pill-mini">Mobile-first</span>
+            <span class="pill-mini">CTA forte</span>
+            <span class="pill-mini">SEO básico</span>
+          </div>
+          <div class="btns" style="margin-top:12px">
             <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">Código</a>
           </div>
@@ -811,7 +887,12 @@
         <div class="card">
           <h3>MovieRate — Avaliação de Filmes</h3>
           <p>Busca, filtros, favoritos e avaliação por estrelas (LocalStorage).</p>
-          <div class="btns">
+          <div class="project-meta">
+            <span class="pill-mini">LocalStorage</span>
+            <span class="pill-mini">Filtros</span>
+            <span class="pill-mini">UI responsiva</span>
+          </div>
+          <div class="btns" style="margin-top:12px">
             <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">Código</a>
           </div>
@@ -820,7 +901,12 @@
         <div class="card">
           <h3>Detector de CPF/CNPJ</h3>
           <p>Formata e valida CPF/CNPJ em tempo real, com feedback visual.</p>
-          <div class="btns">
+          <div class="project-meta">
+            <span class="pill-mini">Validação</span>
+            <span class="pill-mini">Regex</span>
+            <span class="pill-mini">Feedback UI</span>
+          </div>
+          <div class="btns" style="margin-top:12px">
             <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank" rel="noopener">Código</a>
           </div>
@@ -829,15 +915,26 @@
         <div class="card">
           <h3>Roadmap Visual de Estudos</h3>
           <p>Trilhas com progresso, filtros e salvamento automático.</p>
-          <div class="btns">
+          <div class="project-meta">
+            <span class="pill-mini">Progresso</span>
+            <span class="pill-mini">Filtros</span>
+            <span class="pill-mini">Persistência</span>
+          </div>
+          <div class="btns" style="margin-top:12px">
             <a class="btn" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank" rel="noopener">Ver projeto</a>
             <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
       </div>
+
+      <div class="panel" style="margin-top:14px">
+        <p class="muted">
+          <b style="color:var(--text)">Sobre WordPress/Elementor:</b>
+          quando o projeto pede, eu consigo montar/ajustar páginas e seções via Elementor e fazer ajustes finos no front (CSS e JavaScript) para melhorar responsividade, espaçamento e conversão.
+        </p>
+      </div>
     </section>
 
-  
     <section id="faq">
       <h2>FAQ</h2>
       <div class="faq">
@@ -874,12 +971,12 @@
         <details>
           <summary>Você faz ajustes depois? <span class="caret">▾</span></summary>
           <div class="faq-body">
-            Sim. Posso fazer alterações pontuais ou manutenção contínua.
+            Sim. Posso fazer alterações pontuais ou manutenção contínua, inclusive ajustes em WordPress/Elementor quando o site estiver nessa plataforma.
           </div>
         </details>
       </div>
     </section>
-    
+
     <section id="contato" class="contact">
       <h2>Contato</h2>
       <div class="panel">
@@ -899,7 +996,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </main>
 
   <footer>
     © 2026 Matheus — Desenvolvedor Web
@@ -910,7 +1007,7 @@
 
     const baseMsg = encodeURIComponent(
       "Olá Matheus! Quero um site.\n\n" +
-      "Tipo de site: (Landing / Institucional / Catálogo)\n" +
+      "Tipo de site: (Landing / Institucional / Catálogo / WordPress)\n" +
       "Área/negócio: \n" +
       "Prazo: \n" +
       "Referência (link ou exemplo): \n"
@@ -921,7 +1018,6 @@
     document.getElementById("ctaZapBottom").href = waBase;
     document.getElementById("zapFloat").href = waBase;
 
-
     const quoteForm = document.getElementById("quoteForm");
     quoteForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -929,14 +1025,20 @@
       const name = (document.getElementById("qName").value || "").trim();
       const type = (document.getElementById("qType").value || "").trim();
       const deadline = (document.getElementById("qDeadline").value || "").trim();
+
+      if (!name || !type || !deadline) {
+        alert("Preencha Nome, Tipo de site e Prazo para enviar o orçamento.");
+        return;
+      }
+
       const ref = (document.getElementById("qRef").value || "").trim();
       const details = (document.getElementById("qDetails").value || "").trim();
 
       const message =
         "Olá Matheus! Quero um orçamento.\n\n" +
-        `Nome: ${name || "-"}\n` +
-        `Tipo de site: ${type || "-"}\n` +
-        `Prazo: ${deadline || "-"}\n` +
+        `Nome: ${name}\n` +
+        `Tipo de site: ${type}\n` +
+        `Prazo: ${deadline}\n` +
         `Referência: ${ref || "-"}\n` +
         `Detalhes: ${details || "-"}\n`;
 
@@ -975,22 +1077,37 @@
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("mobileDrawer");
 
+    function isDrawerOpen(){
+      return !drawer.classList.contains("drawer-closed");
+    }
+    function openDrawer(){
+      drawer.classList.remove("drawer-closed");
+      menuBtn.setAttribute("aria-expanded", "true");
+      menuBtn.querySelector("span").textContent = "✕";
+    }
     function closeDrawer(){
       drawer.classList.add("drawer-closed");
       menuBtn.setAttribute("aria-expanded", "false");
       menuBtn.querySelector("span").textContent = "☰";
     }
+
     menuBtn.addEventListener("click", () => {
-      const isClosed = drawer.classList.contains("drawer-closed");
-      if (isClosed) {
-        drawer.classList.remove("drawer-closed");
-        menuBtn.setAttribute("aria-expanded", "true");
-        menuBtn.querySelector("span").textContent = "✕";
-      } else {
-        closeDrawer();
-      }
+      isDrawerOpen() ? closeDrawer() : openDrawer();
     });
+
     drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", closeDrawer));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isDrawerOpen()) closeDrawer();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth > 860) return;
+      if (!isDrawerOpen()) return;
+      const clickedInside = drawer.contains(e.target) || menuBtn.contains(e.target);
+      if (!clickedInside) closeDrawer();
+    });
+
 
     const nav = document.getElementById("topNav");
     let lastY = window.scrollY;
@@ -1014,7 +1131,7 @@
 
       if (delta > 0){
         nav.classList.add("nav--hidden");
-        if (!drawer.classList.contains("drawer-closed")) closeDrawer();
+        if (isDrawerOpen()) closeDrawer();
       } else {
         nav.classList.remove("nav--hidden");
       }
