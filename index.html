@@ -225,7 +225,7 @@
     .panel{
       background: color-mix(in srgb, var(--card) 88%, transparent);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: 16px;
       padding: 22px;
       box-shadow: var(--shadow);
     }
@@ -285,34 +285,40 @@
       font-weight: 800;
     }
 
-    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top: 10px}
+    .btns{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-start;
+      margin-top: 10px;
+    }
+
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap: 10px;
       padding: 11px 16px;
-      background: var(--primary);
-      color:#020617;
-      text-decoration:none;
       border-radius: 12px;
       font-weight: 900;
-      transition:.25s ease;
-      border:1px solid transparent;
+      text-decoration:none;
       white-space: nowrap;
-    }
-    .btn:hover{ background: var(--primary-hover); transform: translateY(-1px); }
-    .btn:active{ transform: translateY(0); }
-    .btn--soft{
+      transition:.25s ease;
+      border: 1px solid var(--primary);
       background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      font-weight: 900;
+      color: var(--primary);
+      cursor:pointer;
     }
-    .btn--soft:hover{
-      background: rgba(56,189,248,.10);
+    .btn:hover{ background: rgba(56,189,248,.10); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    .btn--solid{
+      background: var(--primary);
+      color:#020617;
       border-color: var(--primary);
     }
+    .btn--solid:hover{ background: var(--primary-hover); }
 
     section{ margin-top: 44px; }
     h2{
@@ -334,10 +340,11 @@
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 14px;
     }
+
     .card{
       background: color-mix(in srgb, var(--card) 88%, transparent);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: 16px;
       padding: 18px;
       transition: transform .18s ease, border-color .25s ease;
       box-shadow: var(--shadow);
@@ -345,21 +352,6 @@
     .card:hover{ transform: translateY(-4px); border-color: var(--primary); }
     .card h3{ margin-bottom: 8px; font-size: 1.05rem; letter-spacing:.15px; }
     .card p{ color: var(--text-soft); margin-bottom: 10px; font-size: .96rem; }
-
-    .list{
-      margin-top: 10px;
-      display:grid;
-      gap: 8px;
-      color: var(--text-soft);
-      font-weight: 700;
-      font-size: .95rem;
-    }
-    .list div{ display:flex; gap:10px; align-items:flex-start; }
-    .dot{
-      width: 10px; height: 10px; border-radius: 999px; background: rgba(56,189,248,.35);
-      margin-top: 6px; flex: 0 0 auto;
-      border: 1px solid color-mix(in srgb, var(--primary) 50%, transparent);
-    }
 
     .projects{
       display:grid;
@@ -382,6 +374,24 @@
       font-weight: 900;
     }
 
+    .projects .card{
+      display:flex;
+      flex-direction:column;
+      min-height: 100%;
+    }
+    .projects .btns{
+      margin-top:auto;
+      padding-top:12px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 12px;
+    }
+    .projects .btn{
+      width: 100%;
+      max-width: 340px;
+    }
+
     .contact a{
       color: var(--primary);
       text-decoration:none;
@@ -391,6 +401,17 @@
       word-break: break-word;
     }
     .contact a:hover{ text-decoration: underline; }
+    
+    #contato .btns{
+      display:flex !important;
+      justify-content:center !important;
+      align-items:center !important;
+      margin-top: 14px !important;
+    }
+    #contato .btns .btn{
+      width: 260px !important;
+      max-width: 100% !important;
+    }
 
     footer{
       text-align:center;
@@ -416,13 +437,12 @@
 
       .nav-links a{ display:none; }
       .menu-btn{ display:inline-flex; }
+      .nav-inner{ padding: 10px 12px; justify-content: space-between; }
 
-      .nav-inner{
-        padding: 10px 12px;
-        justify-content: space-between;
+      #contato .btns .btn{
+        width: 100% !important;
+        max-width: 320px !important;
       }
-
-      .btns .btn{ width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -496,8 +516,8 @@
           </div>
 
           <div class="btns">
-            <a class="btn" href="#projetos">Ver projetos</a>
-            <a class="btn btn--soft" href="mailto:chamorromatheus5@gmail.com">Falar comigo</a>
+            <a class="btn btn--solid" href="#projetos">Ver projetos</a>
+            <a class="btn" href="mailto:chamorromatheus5@gmail.com">Falar comigo</a>
           </div>
 
           <div style="margin-top:14px" class="muted">
@@ -601,9 +621,9 @@
             <span class="pill-mini">UX</span>
             <span class="pill-mini">WhatsApp</span>
           </div>
-          <div class="btns" style="margin-top:12px">
-            <a class="btn" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">Ver</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">Código</a>
+          <div class="btns">
+            <a class="btn btn--solid" href="https://matheusmnttiii.github.io/restaurante-sabor-e-brasa/" target="_blank" rel="noopener">Ver</a>
+            <a class="btn" href="https://github.com/Matheusmnttiii/restaurante-sabor-e-brasa" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -615,9 +635,9 @@
             <span class="pill-mini">UI</span>
             <span class="pill-mini">SEO básico</span>
           </div>
-          <div class="btns" style="margin-top:12px">
-            <a class="btn" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">Ver</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">Código</a>
+          <div class="btns">
+            <a class="btn btn--solid" href="https://matheusmnttiii.github.io/landing-techfix/" target="_blank" rel="noopener">Ver</a>
+            <a class="btn" href="https://github.com/Matheusmnttiii/landing-techfix" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -629,9 +649,9 @@
             <span class="pill-mini">Filtros</span>
             <span class="pill-mini">UI</span>
           </div>
-          <div class="btns" style="margin-top:12px">
-            <a class="btn" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">Ver</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">Código</a>
+          <div class="btns">
+            <a class="btn btn--solid" href="https://matheusmnttiii.github.io/movierate/" target="_blank" rel="noopener">Ver</a>
+            <a class="btn" href="https://github.com/Matheusmnttiii/movierate" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -643,9 +663,9 @@
             <span class="pill-mini">Regex</span>
             <span class="pill-mini">Feedback</span>
           </div>
-          <div class="btns" style="margin-top:12px">
-            <a class="btn" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank" rel="noopener">Ver</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj" target="_blank" rel="noopener">Código</a>
+          <div class="btns">
+            <a class="btn btn--solid" href="https://matheusmnttiii.github.io/detector-cpf-cnpj/" target="_blank" rel="noopener">Ver</a>
+            <a class="btn" href="https://github.com/Matheusmnttiii/detector-cpf-cnpj/" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
 
@@ -657,9 +677,9 @@
             <span class="pill-mini">Filtros</span>
             <span class="pill-mini">Persistência</span>
           </div>
-          <div class="btns" style="margin-top:12px">
-            <a class="btn" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank" rel="noopener">Ver</a>
-            <a class="btn btn--soft" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank" rel="noopener">Código</a>
+          <div class="btns">
+            <a class="btn btn--solid" href="https://matheusmnttiii.github.io/roadmap-estudos/" target="_blank" rel="noopener">Ver</a>
+            <a class="btn" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
       </div>
@@ -670,11 +690,10 @@
       <div class="panel">
         <a href="mailto:chamorromatheus5@gmail.com">chamorromatheus5@gmail.com</a>
         <a href="https://github.com/Matheusmnttiii" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://wa.me/5567998690241" target="_blank" rel="noopener">WhatsApp: (67) 99869-0241</a
-
-        <div class="btns" style="margin-top:14px">
-          <a class="btn" href="mailto:chamorromatheus5@gmail.com">Me chama por email</a>
-          <a class="btn btn--soft" href="#topo" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Voltar ao topo</a>
+        <a href="https://wa.me/5567998690241" target="_blank" rel="noopener">WhatsApp: (67) 99869-0241</a>
+        
+        <div class="btns">
+          <button class="btn" type="button" id="backTopBtn">Voltar ao topo</button>
         </div>
 
         <p class="muted" style="margin-top:12px">
@@ -720,9 +739,7 @@
     const menuBtn = document.getElementById("menuBtn");
     const drawer = document.getElementById("mobileDrawer");
 
-    function isDrawerOpen(){
-      return !drawer.classList.contains("drawer-closed");
-    }
+    function isDrawerOpen(){ return !drawer.classList.contains("drawer-closed"); }
     function openDrawer(){
       drawer.classList.remove("drawer-closed");
       menuBtn.setAttribute("aria-expanded", "true");
@@ -734,10 +751,7 @@
       menuBtn.querySelector("span").textContent = "☰";
     }
 
-    menuBtn.addEventListener("click", () => {
-      isDrawerOpen() ? closeDrawer() : openDrawer();
-    });
-
+    menuBtn.addEventListener("click", () => { isDrawerOpen() ? closeDrawer() : openDrawer(); });
     drawer.querySelectorAll("a").forEach(a => a.addEventListener("click", closeDrawer));
 
     document.addEventListener("keydown", (e) => {
@@ -773,7 +787,7 @@
 
       if (delta > 0){
         nav.classList.add("nav--hidden");
-        if (isDrawerOpen()) closeDrawer();
+        if (drawer && !drawer.classList.contains("drawer-closed")) closeDrawer();
       } else {
         nav.classList.remove("nav--hidden");
       }
@@ -785,6 +799,10 @@
     window.addEventListener("resize", () => {
       nav.classList.remove("nav--hidden");
       closeDrawer();
+    });
+
+    document.getElementById("backTopBtn").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
 </body>
