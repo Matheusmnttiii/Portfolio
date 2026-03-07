@@ -18,23 +18,22 @@
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif}
     html{scroll-behavior:smooth}
 
-
     :root{
-      --bg: #000000;
-      --bg-soft: #0a0a0a;
+      --bg: #000000; 
+      --bg-soft: #0a0a0a; 
       --card: #0a0a0a;
-      --text: #f5f5f5;
+      --text: #f5f5f5; 
       --text-soft: #a3a3a3;
       --border: #262626;
-      --primary: #ffffff;
+      --primary: #ffffff; 
       --primary-hover: #d4d4d4;
-      --primary-text: #000000;
+      --primary-text: #000000; 
       --shadow: 0 16px 48px rgba(0,0,0,.6);
       --radius: 16px;
       --ring: 0 0 0 4px rgba(255,255,255,.15);
+      --spotlight: rgba(255, 255, 255, 0.08);
     }
     
-
     body.light{
       --bg: #f5f5f5;
       --bg-soft: #ffffff;
@@ -47,10 +46,10 @@
       --primary-text: #ffffff;
       --shadow: 0 16px 48px rgba(0,0,0,.08);
       --ring: 0 0 0 4px rgba(0,0,0,.15);
+      --spotlight: rgba(0, 0, 0, 0.06);
     }
 
     body{
-
       background:
         radial-gradient(1200px 640px at 20% 0%, color-mix(in srgb, var(--primary) 3%, transparent), transparent 55%),
         radial-gradient(1000px 560px at 90% 10%, color-mix(in srgb, var(--primary) 2%, transparent), transparent 55%),
@@ -61,438 +60,163 @@
       overflow-x: hidden;
     }
 
+
     .skip-link{
-      position:absolute;
-      left:-999px;
-      top:10px;
-      background: var(--primary);
-      color: var(--primary-text);
-      padding:10px 12px;
-      border-radius: 12px;
-      font-weight: 900;
-      z-index: 9999;
-      text-decoration:none;
+      position:absolute; left:-999px; top:10px; background: var(--primary); color: var(--primary-text);
+      padding:10px 12px; border-radius: 12px; font-weight: 900; z-index: 9999; text-decoration:none;
     }
     .skip-link:focus{ left: 14px; box-shadow: var(--ring); }
 
     .nav{
-      position: sticky;
-      top: 0;
-      z-index: 90;
+      position: sticky; top: 0; z-index: 90;
       background: color-mix(in srgb, var(--bg-soft) 82%, transparent);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(12px); border-bottom: 1px solid transparent;
       transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1), border-color .3s ease, box-shadow .3s ease;
     }
-    .nav.scrolled {
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-    }
+    .nav.scrolled { border-bottom: 1px solid var(--border); box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
     .nav--hidden{ transform: translateY(-110%); }
 
-    .nav-inner{
-      max-width: 1120px;
-      margin: auto;
-      padding: 12px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-    }
+    .nav-inner{ max-width: 1120px; margin: auto; padding: 12px 18px; display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+    .brand{ display:flex; align-items:center; gap:12px; white-space: nowrap; line-height: 1; }
+    .brand .title{ display:flex; align-items:center; gap:10px; font-weight: 900; letter-spacing:.2px; line-height: 1; }
+    .brand .subtitle{ display:inline-flex; align-items:center; font-weight:700; color: var(--text-soft); font-size: .95rem; line-height: 1; padding-top: 1px; }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      white-space: nowrap;
-      line-height: 1;
-    }
-    .brand .title{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight: 900;
-      letter-spacing:.2px;
-      line-height: 1;
-    }
-    .brand .subtitle{
-      display:inline-flex;
-      align-items:center;
-      font-weight:700;
-      color: var(--text-soft);
-      font-size: .95rem;
-      line-height: 1;
-      padding-top: 1px;
-    }
+    .nav-links{ display:flex; align-items:center; gap: 10px; flex-wrap: nowrap; }
+    .nav-links a{ color: var(--text-soft); text-decoration:none; padding: 8px 10px; border-radius: 12px; border: 1px solid transparent; transition: all .2s ease; font-size: .95rem; white-space: nowrap; }
+    .nav-links a:hover{ color: var(--text); border-color: var(--border); background: rgba(255,255,255,.03); transform: translateY(-1px); }
+    .nav-links a:active{ transform: translateY(0); }
 
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      flex-wrap: nowrap;
+    .theme-btn, .menu-btn{
+      border: 1px solid var(--border); background: rgba(255,255,255,.03); color: var(--text);
+      border-radius: 999px; cursor:pointer; padding: 8px 10px; display:flex; align-items:center; gap: 10px;
+      transition: transform .2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .25s ease, background .25s ease; user-select:none;
     }
-    .nav-links a{
-      color: var(--text-soft);
-      text-decoration:none;
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      transition: all .2s ease;
-      font-size: .95rem;
-      white-space: nowrap;
-    }
-    .nav-links a:hover{
-      color: var(--text);
-      border-color: var(--border);
-      background: rgba(255,255,255,.03);
-      transform: translateY(-1px);
-    }
-    .nav-links a:active{
-      transform: translateY(0);
-    }
-
-    .theme-btn{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      border-radius: 999px;
-      cursor:pointer;
-      padding: 8px 10px;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      transition: transform .2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .25s ease, background .25s ease;
-      user-select:none;
-    }
-    .theme-btn:hover{ border-color: var(--primary); }
-    .theme-btn:active{ transform: scale(.92); }
-    .toggle{
-      width: 54px;
-      height: 30px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .knob{
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      position:absolute;
-      top: 50%;
-      left: 3px;
-      transform: translateY(-50%);
-      background: linear-gradient(135deg, #ffffff, #d4d4d4);
-      box-shadow: 0 4px 12px rgba(255,255,255,.25);
-      transition: left .3s cubic-bezier(.34,1.56,.64,1), filter .25s ease, background .3s ease;
-    }
-    body.light .knob{ 
-      left: 27px; 
-      background: linear-gradient(135deg, #262626, #000000);
-      box-shadow: 0 4px 12px rgba(0,0,0,.25);
-    }
-    .icon{
-      width: 18px;
-      height: 18px;
-      display:grid;
-      place-items:center;
-      opacity: .95;
-      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
-    }
+    .menu-btn{ border-radius: 12px; padding: 10px 12px; display:none; }
+    .theme-btn:hover, .menu-btn:hover{ border-color: var(--primary); }
+    .theme-btn:active, .menu-btn:active{ transform: scale(.92); }
+    
+    .toggle{ width: 54px; height: 30px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid var(--border); position: relative; overflow: hidden; }
+    .knob{ width: 24px; height: 24px; border-radius: 999px; position:absolute; top: 50%; left: 3px; transform: translateY(-50%); background: linear-gradient(135deg, #ffffff, #d4d4d4); box-shadow: 0 4px 12px rgba(255,255,255,.25); transition: left .3s cubic-bezier(.34,1.56,.64,1), filter .25s ease, background .3s ease; }
+    body.light .knob{ left: 27px; background: linear-gradient(135deg, #262626, #000000); box-shadow: 0 4px 12px rgba(0,0,0,.25); }
+    .icon{ width: 18px; height: 18px; display:grid; place-items:center; opacity: .95; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
     body.light .icon{ transform: rotate(18deg) scale(1.1); }
-
-    .menu-btn{
-      display:none;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      border-radius: 12px;
-      cursor:pointer;
-      padding: 10px 12px;
-      transition: transform .2s cubic-bezier(.34,1.56,.64,1), border-color .2s ease;
-      user-select:none;
-    }
-    .menu-btn:hover{ border-color: var(--primary); }
-    .menu-btn:active{ transform: scale(.92); }
     .menu-btn span{ font-size: 18px; line-height: 1; transition: transform .3s ease;}
 
-    .mobile-drawer{
-      border-top: 1px solid var(--border);
-      padding: 10px 14px 14px;
-      display:none;
-    }
+    .mobile-drawer{ border-top: 1px solid var(--border); padding: 10px 14px 14px; display:none; }
     .mobile-drawer:not(.drawer-closed){ display:block; animation: slideDown 0.3s ease forwards; }
-    .mobile-drawer a{
-      display:block;
-      padding: 12px 12px;
-      border-radius: 14px;
-      text-decoration:none;
-      color: var(--text);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      margin-top: 10px;
-      font-weight: 900;
-      transition: all 0.2s ease;
-    }
-    .mobile-drawer a:hover{
-      border-color: var(--primary);
-      background: color-mix(in srgb, var(--primary) 5%, transparent);
-      transform: translateX(4px);
-    }
+    .mobile-drawer a{ display:block; padding: 12px 12px; border-radius: 14px; text-decoration:none; color: var(--text); border: 1px solid var(--border); background: rgba(255,255,255,.03); margin-top: 10px; font-weight: 900; transition: all 0.2s ease; }
+    .mobile-drawer a:hover{ border-color: var(--primary); background: color-mix(in srgb, var(--primary) 5%, transparent); transform: translateX(4px); }
     .drawer-closed{ display:none; }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
     .container{max-width:1120px;margin:auto;padding: 34px 18px}
-    .panel{
-      background: color-mix(in srgb, var(--card) 60%, transparent);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
+    .panel{ background: color-mix(in srgb, var(--card) 60%, transparent); border: 1px solid var(--border); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); }
+    
     header.hero{ padding: 22px 0 6px; }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      align-items: stretch;
-    }
+    .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: stretch; }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight: 900;
-      font-size: .92rem;
-      color: var(--text);
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-    .badge{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text-soft);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: .82rem;
-    }
-    .hero h1{
-      font-size: 2.2rem;
-      line-height: 1.12;
-      margin-bottom: 10px;
-      letter-spacing: .2px;
-    }
-    .hero p{
-      color: var(--text-soft);
-      font-size: 1.05rem;
-      margin-bottom: 16px;
-    }
+    .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-weight: 900; font-size: .92rem; color: var(--text); margin-bottom: 10px; flex-wrap: wrap; }
+    .badge{ border: 1px solid var(--border); background: rgba(255,255,255,.03); color: var(--text-soft); padding: 6px 10px; border-radius: 999px; font-weight: 900; font-size: .82rem; }
 
-    .pill{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 8px 0 18px;
+    .gradient-text {
+      background: linear-gradient(90deg, var(--text), var(--text-soft), var(--text));
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shine 3s linear infinite;
     }
-    .chip{
-      font-size: .85rem;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text-soft);
-      font-weight: 800;
+    @keyframes shine { to { background-position: 200% center; } }
+
+    .hero h1{ font-size: 2.2rem; line-height: 1.12; margin-bottom: 10px; letter-spacing: .2px; min-height: 80px; }
+  
+    .cursor { display: inline-block; width: 3px; background-color: var(--primary); animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero p{ color: var(--text-soft); font-size: 1.05rem; margin-bottom: 16px; }
+
+    .pill{ display:flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 18px; }
+  
+    .chip{ 
+      font-size: .85rem; padding: 7px 10px; border-radius: 999px; border: 1px solid var(--border); 
+      background: rgba(255,255,255,.03); color: var(--text-soft); font-weight: 800; 
       transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      animation: float 4s ease-in-out infinite;
     }
-    .chip:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-      color: var(--text);
+    .chip:nth-child(2) { animation-delay: 1s; }
+    .chip:nth-child(3) { animation-delay: 2s; }
+    .chip:nth-child(4) { animation-delay: 3s; }
+    @keyframes float { 
+      0%, 100% { transform: translateY(0); } 
+      50% { transform: translateY(-4px); } 
     }
+    .chip:hover { transform: translateY(-6px) scale(1.05); border-color: var(--primary); color: var(--text); animation-play-state: paused; }
 
-    .btns{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-start;
-      margin-top: 10px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 11px 16px;
-      border-radius: 12px;
-      font-weight: 900;
-      text-decoration:none;
-      white-space: nowrap;
-      transition: transform .2s cubic-bezier(.34,1.56,.64,1), background .25s ease, box-shadow .2s ease;
-      border: 1px solid var(--primary);
-      background: transparent;
-      color: var(--primary);
-      cursor:pointer;
-    }
-    .btn:hover{ 
-      background: color-mix(in srgb, var(--primary) 10%, transparent);
-      transform: translateY(-2px); 
-      box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 15%, transparent);
-    }
+    .btns{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-start; margin-top: 10px; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap: 10px; padding: 11px 16px; border-radius: 12px; font-weight: 900; text-decoration:none; white-space: nowrap; transition: transform .2s cubic-bezier(.34, 1.56, 0.64, 1), background .25s ease, box-shadow .2s ease; border: 1px solid var(--primary); background: transparent; color: var(--primary); cursor:pointer; }
+    .btn:hover{ background: color-mix(in srgb, var(--primary) 10%, transparent); transform: translateY(-2px); box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 15%, transparent); }
     .btn:active{ transform: translateY(0) scale(0.96); box-shadow: none; }
-
-    .btn--solid{
-      background: var(--primary);
-      color: var(--primary-text);
-      border-color: var(--primary);
-    }
-    .btn--solid:hover{ 
-      background: var(--primary-hover); 
-      box-shadow: 0 6px 16px color-mix(in srgb, var(--primary) 25%, transparent);
-    }
+    .btn--solid{ background: var(--primary); color: var(--primary-text); border-color: var(--primary); }
+    .btn--solid:hover{ background: var(--primary-hover); box-shadow: 0 6px 16px color-mix(in srgb, var(--primary) 25%, transparent); }
 
     section{ margin-top: 44px; }
-    h2{
-      margin: 0 0 16px;
-      border-left: 4px solid var(--primary);
-      padding-left: 10px;
-      font-size: 1.25rem;
-      letter-spacing:.2px;
-    }
+    h2{ margin: 0 0 16px; border-left: 4px solid var(--primary); padding-left: 10px; font-size: 1.25rem; letter-spacing:.2px; }
     .muted{ color: var(--text-soft); }
 
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 14px;
-    }
-    .grid-2{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
-    }
+    .grid-3{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .grid-2{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
 
-    .card{
-      background: color-mix(in srgb, var(--card) 60%, transparent);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-      transition: transform .3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color .3s ease, box-shadow .3s ease;
-      box-shadow: var(--shadow);
+  
+    .card{ 
+      position: relative; overflow: hidden;
+      background: color-mix(in srgb, var(--card) 60%, transparent); border: 1px solid var(--border); 
+      border-radius: 16px; padding: 18px; 
+      transition: transform .3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color .3s ease, box-shadow .3s ease; 
+      box-shadow: var(--shadow); 
     }
-    .card:hover{ 
-      transform: translateY(-6px); 
-      border-color: var(--primary); 
-      box-shadow: 0 20px 40px rgba(0,0,0,.8); 
+    .card::before {
+      content: ""; position: absolute; top: var(--y, -100px); left: var(--x, -100px);
+      width: 250px; height: 250px; background: radial-gradient(circle, var(--spotlight) 0%, transparent 70%);
+      transform: translate(-50%, -50%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 1;
     }
+    .card:hover::before { opacity: 1; }
+    
+
+    .card > * { position: relative; z-index: 2; }
+
+    .card:hover{ transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,.8); }
     body.light .card:hover { box-shadow: 0 20px 40px rgba(0,0,0,.15); }
 
     .card h3{ margin-bottom: 8px; font-size: 1.05rem; letter-spacing:.15px; }
     .card p{ color: var(--text-soft); margin-bottom: 10px; font-size: .96rem; }
 
-    .projects{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-    .project-meta{
-      margin-top: 10px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .pill-mini{
-      font-size: .78rem;
-      padding: 6px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      color: var(--text-soft);
-      font-weight: 900;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-    .card:hover .pill-mini {
-      background: color-mix(in srgb, var(--primary) 8%, transparent);
-      color: var(--text);
-      border-color: color-mix(in srgb, var(--primary) 20%, transparent);
-    }
-
-    .projects .card{
-      display:flex;
-      flex-direction:column;
-      min-height: 100%;
-    }
-    .projects .btns{
-      margin-top:auto;
-      padding-top:12px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap: 12px;
-    }
-    .projects .btn{
-      width: 100%;
-      max-width: 340px;
-    }
-
-    .contact a{
-      color: var(--primary);
-      text-decoration:none;
-      display:block;
-      margin-bottom: 10px;
-      font-weight: 900;
-      word-break: break-word;
-      transition: color 0.2s ease, transform 0.2s ease;
-      display: inline-block;
-    }
-    .contact a:hover{ 
-      text-decoration: underline; 
-      transform: translateX(4px);
-    }
+    .projects{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card-img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; transition: transform 0.4s ease; }
     
-    #contato .btns{
-      display:flex;
-      justify-content:flex-start;
-      align-items:center;
-      margin-top: 24px;
-    }
-    #contato .btns .btn{
-      width: auto;
-    }
+    .card:hover .card-img { transform: scale(1.03); }
 
-    footer{
-      text-align:center;
-      padding: 28px 18px;
-      border-top: 1px solid var(--border);
-      color: var(--text-soft);
-      margin-top: 40px;
-    }
+    .project-meta{ margin-top: 10px; display:flex; flex-wrap: wrap; gap: 8px; }
+    .pill-mini{ font-size: .78rem; padding: 6px 9px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,.03); color: var(--text-soft); font-weight: 900; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+    .card:hover .pill-mini { background: color-mix(in srgb, var(--primary) 8%, transparent); color: var(--text); border-color: color-mix(in srgb, var(--primary) 20%, transparent); }
 
-    a:focus-visible, button:focus-visible{
-      outline: none;
-      box-shadow: var(--ring);
-    }
+    .projects .card{ display:flex; flex-direction:column; min-height: 100%; }
+    .projects .btns{ margin-top:auto; padding-top:12px; display:flex; flex-direction:column; align-items:center; gap: 12px; }
+    .projects .btn{ width: 100%; max-width: 340px; }
+
+    .contact a{ color: var(--primary); text-decoration:none; display:block; margin-bottom: 10px; font-weight: 900; word-break: break-word; transition: color 0.2s ease, transform 0.2s ease; display: inline-block; }
+    .contact a:hover{ text-decoration: underline; transform: translateX(4px); }
+      
+    #contato .btns{ display:flex; justify-content:flex-start; align-items:center; margin-top: 24px; }
+    #contato .btns .btn{ width: auto; }
+
+    footer{ text-align:center; padding: 28px 18px; border-top: 1px solid var(--border); color: var(--text-soft); margin-top: 40px; }
+
+    a:focus-visible, button:focus-visible{ outline: none; box-shadow: var(--ring); }
     a:focus, button:focus { outline: none; }
 
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-      will-change: opacity, transform;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: opacity, transform; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
     .grid-3 > .fade-in:nth-child(2), .grid-2 > .fade-in:nth-child(2) { transition-delay: 0.1s; }
     .grid-3 > .fade-in:nth-child(3) { transition-delay: 0.2s; }
     .projects > .fade-in:nth-child(2) { transition-delay: 0.1s; }
@@ -506,7 +230,7 @@
       .grid-2{ grid-template-columns: 1fr; }
       .container{ padding: 22px 14px; }
       header.hero{ padding: 16px 0 0; }
-      .hero h1{ font-size: 2.05rem; }
+      .hero h1{ font-size: 2.05rem; min-height: 100px; } 
       .brand .subtitle{ display:none; }
 
       .nav-links a{ display:none; }
@@ -520,7 +244,7 @@
 
     @media (prefers-reduced-motion: reduce){
       *{ scroll-behavior:auto !important; }
-      .card, .btn, .nav, .knob, .icon, .chip, .menu-btn, .mobile-drawer a, .contact a{ transition:none !important; transform:none !important; }
+      .card, .btn, .nav, .knob, .icon, .chip, .menu-btn, .mobile-drawer a, .contact a, .card-img { transition:none !important; transform:none !important; animation:none !important; }
       .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
     }
   </style>
@@ -568,13 +292,12 @@
   <main class="container" id="conteudo" role="main">
     <header class="hero fade-in">
       <div class="hero-grid">
-        <div class="panel">
-          <div class="eyebrow">
+        <div class="panel card"> <div class="eyebrow">
             <span class="badge">Engenharia de Software</span>
             <span class="badge">Front-end • UI • Web</span>
           </div>
 
-          <h1>Oi! Eu sou o Matheus — construo interfaces web e projetos que juntam código + experiência.</h1>
+          <h1>Oi! Eu sou o <span class="gradient-text">Matheus</span> — <span id="typewriter"></span><span class="cursor"></span></h1>
 
           <p>
             Sou estudante de Engenharia de Software e técnico em Informática para Internet pelo IFMS.
@@ -585,7 +308,7 @@
           <div class="pill">
             <span class="chip">⚡ Performance & UX</span>
             <span class="chip">📱 Mobile-first</span>
-            <span class="chip">🧠 Curiosidade constante</span>
+            <span class="chip">🧠 Curiosidade</span>
             <span class="chip">🧩 Código limpo</span>
           </div>
 
@@ -599,61 +322,89 @@
           </div>
         </div>
 
-        <div class="panel" id="sobre">
-          <h2 style="margin-top:0">Sobre mim</h2>
+        <div class="panel card" id="sobre"> <h2 style="margin-top:0">Sobre mim</h2>
           <p class="muted">
             Eu gosto de projetos com impacto real: interfaces claras, acessibilidade, boas decisões de layout e consistência visual.
             Também curto aprender por desafios — pegar uma ideia e levar até “link no ar”.
           </p>
 
-          <div class="card" style="margin-top:14px">
+          <div style="margin-top:14px">
             <h3>Como eu trabalho</h3>
-            <div class="list">
-              <div><span class="dot"></span><span>Organizo antes: objetivo → estrutura → componentes</span></div>
-              <div><span class="dot"></span><span>Prioridade em responsividade e legibilidade</span></div>
-              <div><span class="dot"></span><span>Itero rápido: faço, testo, ajusto e limpo o código</span></div>
-              <div><span class="dot"></span><span>Uso Git/GitHub para versionar e publicar</span></div>
+            <div class="list" style="margin-top: 8px;">
+              <div style="margin-bottom: 4px;">• Organizo antes: objetivo → estrutura → componentes</div>
+              <div style="margin-bottom: 4px;">• Prioridade em responsividade e legibilidade</div>
+              <div style="margin-bottom: 4px;">• Itero rápido: faço, testo, ajusto e limpo o código</div>
+              <div>• Uso Git/GitHub para versionar e publicar</div>
             </div>
           </div>
         </div>
       </div>
     </header>
 
-    <section id="habilidades">
-      <h2 class="fade-in">Habilidades</h2>
+ <section id="habilidades">
+      <h2 class="fade-in">Áreas de Conhecimento</h2>
       <div class="grid-3">
+        
         <div class="card fade-in">
           <h3>Front-end</h3>
-          <p>Interfaces responsivas, componentes e páginas completas.</p>
+          <p>Criação de interfaces web dinâmicas, responsivas e focadas na experiência do usuário.</p>
           <div class="project-meta">
-            <span class="pill-mini">HTML</span>
-            <span class="pill-mini">CSS</span>
-            <span class="pill-mini">JavaScript</span>
-            <span class="pill-mini">TypeScript</span>
-          </div>
-        </div>
-
-        <div class="card fade-in">
-          <h3>Boas práticas</h3>
-          <p>Organização, legibilidade e manutenção.</p>
-          <div class="project-meta">
-            <span class="pill-mini">Semântica</span>
-            <span class="pill-mini">Acessibilidade</span>
+            <span class="pill-mini">UI/UX</span>
             <span class="pill-mini">Responsividade</span>
-            <span class="pill-mini">Performance</span>
+            <span class="pill-mini">Acessibilidade</span>
           </div>
         </div>
 
         <div class="card fade-in">
-          <h3>Ferramentas</h3>
-          <p>Workflow de projetos e publicação.</p>
+          <h3>Redes de Computadores</h3>
+          <p>Entendimento de protocolos de comunicação, infraestrutura e topologias de rede.</p>
           <div class="project-meta">
-            <span class="pill-mini">Git</span>
-            <span class="pill-mini">GitHub</span>
-            <span class="pill-mini">Pages</span>
-            <span class="pill-mini">DevTools</span>
+            <span class="pill-mini">Protocolos</span>
+            <span class="pill-mini">Infraestrutura</span>
+            <span class="pill-mini">Conectividade</span>
           </div>
         </div>
+
+        <div class="card fade-in">
+          <h3>IoT (Internet das Coisas)</h3>
+          <p>Integração entre hardware e software para automação e dispositivos conectados.</p>
+          <div class="project-meta">
+            <span class="pill-mini">Sensores</span>
+            <span class="pill-mini">Sistemas Embarcados</span>
+            <span class="pill-mini">Automação</span>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Banco de Dados</h3>
+          <p>Modelagem, manipulação e gestão de dados para garantir integridade e performance.</p>
+          <div class="project-meta">
+            <span class="pill-mini">SQL</span>
+            <span class="pill-mini">NoSQL</span>
+            <span class="pill-mini">Modelagem</span>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Frameworks</h3>
+          <p>Utilização de ferramentas e bibliotecas modernas para acelerar o desenvolvimento.</p>
+          <div class="project-meta">
+            <span class="pill-mini">Componentização</span>
+            <span class="pill-mini">Agilidade</span>
+            <span class="pill-mini">Boas Práticas</span>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <h3>Segurança da Informação</h3>
+          <p>Práticas de proteção de dados, identificação de vulnerabilidades e sistemas seguros.</p>
+          <div class="project-meta">
+            <span class="pill-mini">Criptografia</span>
+            <span class="pill-mini">Prevenção</span>
+            <span class="pill-mini">Privacidade</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -662,10 +413,10 @@
       <div class="grid-2">
         <div class="card fade-in">
           <h3>Conquistas</h3>
-          <div class="list">
-            <div><span class="dot"></span><span>Olimpíadas acadêmicas e medalhas</span></div>
-            <div><span class="dot"></span><span>Feiras científicas e projetos</span></div>
-            <div><span class="dot"></span><span>Cursos e certificações relevantes</span></div>
+          <div class="list" style="margin-top: 8px; color: var(--text-soft);">
+            <div style="margin-bottom: 4px;">• Olimpíadas acadêmicas e medalhas</div>
+            <div style="margin-bottom: 4px;">• Feiras científicas e projetos</div>
+            <div>• Cursos e certificações relevantes</div>
           </div>
         </div>
 
@@ -674,9 +425,9 @@
           <p class="muted">
             Evoluir como dev, fortalecer base de engenharia e construir projetos com UX melhor e código mais sólido.
           </p>
-          <div class="list">
-            <div><span class="dot"></span><span>Projetos completos (design à publicação)</span></div>
-            <div><span class="dot"></span><span>Arquitetura e componentes</span></div>
+          <div class="list" style="margin-top: 8px; color: var(--text-soft);">
+            <div style="margin-bottom: 4px;">• Projetos completos (design à publicação)</div>
+            <div>• Arquitetura e componentes web</div>
           </div>
         </div>
       </div>
@@ -686,7 +437,9 @@
       <h2 class="fade-in">Projetos</h2>
 
       <div class="projects">
+        
         <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=400&fit=crop&q=80" alt="Foto de uma grelha com carne, representando o restaurante Sabor e Brasa.">
           <h3>Site de Restaurante</h3>
           <p>Cardápio por categorias, busca, carrinho e finalização via WhatsApp.</p>
           <div class="project-meta">
@@ -701,6 +454,7 @@
         </div>
 
         <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600&h=400&fit=crop&q=80" alt="Foto de componentes eletrônicos iluminados, representando conserto de tecnologia.">
           <h3>Landing Page Comercial</h3>
           <p>Página para divulgação de serviços locais com foco em layout e CTA.</p>
           <div class="project-meta">
@@ -715,6 +469,7 @@
         </div>
 
         <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=400&fit=crop&q=80" alt="Foto de uma sala de cinema escura, representando o app de filmes.">
           <h3>MovieRate — Avaliação</h3>
           <p>Busca, filtros, favoritos e avaliação por estrelas (LocalStorage).</p>
           <div class="project-meta">
@@ -729,6 +484,7 @@
         </div>
 
         <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop&q=80" alt="Tela de computador exibindo código de programação.">
           <h3>Detector de CPF/CNPJ</h3>
           <p>Formata e valida CPF/CNPJ em tempo real, com feedback visual.</p>
           <div class="project-meta">
@@ -743,8 +499,9 @@
         </div>
 
         <div class="card fade-in">
+          <img class="card-img" src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=400&fit=crop&q=80" alt="Mesa de trabalho com notebook, representando estudos e planejamento.">
           <h3>Roadmap de Estudos</h3>
-          <p>Trilhas com progresso, filtros e salvamento automático.</p>
+          <p>Trilhas com progresso, filtros e salvamento automático local.</p>
           <div class="project-meta">
             <span class="pill-mini">Progresso</span>
             <span class="pill-mini">Filtros</span>
@@ -755,13 +512,13 @@
             <a class="btn" href="https://github.com/Matheusmnttiii/roadmap-estudos" target="_blank" rel="noopener noreferrer">Código</a>
           </div>
         </div>
+
       </div>
     </section>
 
     <section id="contato" class="contact fade-in">
       <h2>Contato</h2>
-      <div class="panel">
-        <div>
+      <div class="panel card"> <div>
           <a href="mailto:chamorromatheus5@gmail.com">chamorromatheus5@gmail.com</a><br>
           <a href="https://github.com/Matheusmnttiii" target="_blank" rel="noopener noreferrer">GitHub</a><br>
           <a href="https://wa.me/5567998690241" target="_blank" rel="noopener noreferrer">WhatsApp: (67) 99869-0241</a>
@@ -783,7 +540,34 @@
   </footer>
 
   <script>
+  
+    const textToType = "construo interfaces web e projetos que juntam código + experiência.";
+    const typewriterElement = document.getElementById("typewriter");
+    let typeIndex = 0;
 
+    function typeWriter() {
+      if (typeIndex < textToType.length) {
+        typewriterElement.innerHTML += textToType.charAt(typeIndex);
+        typeIndex++;
+        setTimeout(typeWriter, 40);
+      } else {
+ 
+      }
+    }
+
+    setTimeout(typeWriter, 500);
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--x', `${x}px`);
+        card.style.setProperty('--y', `${y}px`);
+      });
+    });
+
+ 
     const themeBtn = document.getElementById("themeBtn");
     const themeIcon = document.getElementById("themeIcon");
     const mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)");
